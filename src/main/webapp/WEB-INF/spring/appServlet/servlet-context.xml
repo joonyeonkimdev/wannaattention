@@ -2,7 +2,6 @@
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:aop = "http://www.springframework.org/schema/aop"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
@@ -25,8 +24,6 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.wannaattention.www" />
-	
-	<mvc:default-servlet-handler />
 	
 	<aop:aspectj-autoproxy/>
 	
