@@ -6,7 +6,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("board")
-public class BoardContoller {
+public class BoardController {
 	@RequestMapping("animalList")
 	public ModelAndView animalList() {
 		ModelAndView mav = new ModelAndView();

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!doctype html>
@@ -14,7 +14,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <%-- HEADER --%>
-	<header class="container">
+	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="#">
 			    <img src="../resources/images/service_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -90,7 +90,7 @@
 	</main>
 	    
 	<%-- FOOTER --%>
-	<footer class="container text-center py-5 mt-auto">
+	<footer class="text-center py-5 mt-auto">
 		<hr>
 		<p>
 			&copy; 2022 Happyfeet Company, Inc. 
