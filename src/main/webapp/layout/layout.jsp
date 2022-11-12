@@ -16,7 +16,7 @@
     <%-- HEADER --%>
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="/">
 			    <img src="../resources/images/service_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			    WannaAttention
     		</a>
@@ -70,14 +70,14 @@
 				</ul>
 				<span>
 					<c:if test="${empty sessionScope.loginUser}">
-						<a href="${path}/user/#">로그인</a><br>
-						<a href="${path}/user/#">회원가입</a>
+						<a href="${path}/user/login">로그인</a><br>
+						<a href="${path}/user/join">회원가입</a>
 					</c:if> 
 					<c:if test="${!empty sessionScope.loginUser}">
 						<img src="../resources/images/profile_default_pic.png" width="30" height="30" class="d-inline-block align-top" alt="">
 						${sessionScope.loginUser.name}님,<br>
 						반갑습니다.&nbsp;&nbsp;
-						<a href="${path}/user/#">로그아웃</a>
+						<a href="${path}/user/logout">로그아웃</a>
 					</c:if>
 				</span>
 			</div>

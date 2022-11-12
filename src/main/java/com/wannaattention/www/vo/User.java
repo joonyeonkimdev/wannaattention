@@ -7,25 +7,26 @@ import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class UserVO {
+public class User {
 	private int userNum;
 	private String userType;
-	@Size(min=3, max=10, message="아이디는 3자이상 10자 이하로 입력하세요")
+	@Size(message = "아이디는 5~15자리를 사용해야 합니다.")
 	private String id;
-	@Size(min=8,max=16,message="비밀번호는 8자이상 16자 이하로 입력하세요")
+	@Size(min=8,max=16,message="비밀번호는 영문+숫자+특수문자 조합 8~25자리를 사용해야 합니다.")
 	private String pw;
-	@NotEmpty(message="사용자 이름 입력은 필수입니다.")
+	@NotEmpty(message="사용자 이름은 필수 입력사항입니다.")
 	private String name;
+	@NotEmpty(message="사용자 닉네임은 필수 입력사항입니다.")
 	private String nickname;
 	private Date birthday;
-	@NotEmpty(message="이메일 입력은 필수입니다.")
+	@NotEmpty(message="이메일은 필수 입력사항입니다.")
 	private String email;
-	@NotEmpty(message="휴대전화번호 입력은 필수입니다.")
+	@NotEmpty(message="휴대전화번호는 필수 입력사항입니다.")
 	private String phone;
 	private String tel;
-	@NotEmpty(message="휴대전화번호 입력은 필수입니다.")
+	@NotEmpty(message="우편번호는 필수 입력사항입니다.")
 	private String postNum;
-	@NotEmpty(message="주소 입력은 필수입니다.")
+	@NotEmpty(message="주소는 필수 입력사항입니다.")
 	private String address;
 	private Date signupDate;
 	private String busiNum;
