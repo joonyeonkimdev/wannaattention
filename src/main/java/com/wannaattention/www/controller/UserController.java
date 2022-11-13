@@ -70,12 +70,23 @@ public class UserController {
 			mav.addObject("user",user);
 		} catch(Exception e) {
 			e.printStackTrace();
-			bindingresult.reject("error.duplicate.user");
+			bindingresult.reject("error.join.user");
 			mav.getModel().putAll(bindingresult.getModel());
 			return mav;
 		}
-		mav.setViewName("redirect:login");
+		mav.setViewName("redirect:welcome");
 		return mav;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

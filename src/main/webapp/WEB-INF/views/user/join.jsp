@@ -20,12 +20,14 @@
 		if (num == "0") {
 			document.getElementById("userType0").className = "btn btn-primary btn-sm";
 			document.getElementById("userType1").className = "btn btn-secondary btn-sm";
+			document.getElementById("birthdayDiv").style = "";
 			document.getElementById("busiDiv").style = "display:none";
 		} else {
 			document.getElementById("userType0").className = "btn btn-secondary btn-sm";
 			document.getElementById("userType1").className = "btn btn-primary btn-sm";
 			document.getElementById("birthdayDiv").style = "display:none";
 			document.getElementById("busiDiv").style = "";
+			
 		}
 		document.f.userType.value = num;
 	}
@@ -43,16 +45,18 @@
 	}
 	
 	// 생일 선택값 세팅
-	function set_birthday() {
+	function set_birthday(timepoint) {
 		let year = document.getElementById("year");
 		let month = document.getElementById("month");
 		let date = document.getElementById("date");
 		let birthdayStr = document.getElementById("birthdayStr");
 		let birthday = document.getElementById("birthday");
 		
-		if (year && month && date) {
-			birthdayStr.value = year.value + "/" + month.value + "/" + date.value;
-			birthday.value = birthdayStr.value;
+		if (year.value && month.value && date.value) {
+			if (year.value != "연" && month.value != "월" && date.value != "일" ) {
+				birthdayStr.value = year.value + "/" + month.value + "/" + date.value;
+				birthday.value = birthdayStr.value;
+			}
 		}
 	}
 	
@@ -74,6 +78,7 @@
 		let busiNum = document.getElementById("busiNum");
 		let termChk = document.getElementById("termChk");
 		let privacyChk = document.getElementById("privacyChk");
+		let shelterDesFile = document.getElementById("shelterDesFile");
 		
 		let pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/; //비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
 		let numOnlyRegex = /^[0-9]+$/; //숫자만 입력하는 정규식
@@ -118,9 +123,13 @@
 			return false;
 		}
 		
-		if (birthday.value == "") {
-			alert("생년월일을 선택하세요.");
-			return false;
+		if (userType.value == "0") {
+			if (birthday.value == "") {
+				alert("생년월일을 선택하세요.");
+				return false;
+			}
+		} else {
+			birthday.value = new Date(null);
 		}
 		
 		if (emailId.value == "") {
@@ -140,8 +149,8 @@
 			phone.focus();
 			return false;
 		} else if (!numOnlyRegex.test(phone.value)) {
-			alert("전화번호는 숫자만 입력할 수 있습니다.");
-			phone.value = ""
+			alert("전화번호는 숫자만 입력해 주세요.");
+			phone.value = "";
 		    phone.focus();
 		    return false;
 		}
@@ -151,8 +160,8 @@
 			tel.focus();
 			return false;
 		} else if (!numOnlyRegex.test(tel.value)) {
-			alert("전화번호는 숫자만 입력할 수 있습니다.");
-			tel.value = ""
+			alert("전화번호는 숫자만 입력해 주세요.");
+			tel.value = "";
 			tel.focus();
 		    return false;
 		}
@@ -162,8 +171,8 @@
 			postNum.focus();
 			return false;
 		} else if (!numOnlyRegex.test(postNum.value)) {
-			alert("우편번호는 숫자만 입력할 수 있습니다.");
-			postNum.value = ""
+			alert("우편번호는 숫자만 입력해 주세요.");
+			postNum.value = "";
 			postNum.focus();
 		    return false;
 		}
@@ -174,11 +183,21 @@
 			return false;
 		}
 		
-		if (userType == "1") {
+		if (userType.value == "1") {
 			if (busiNum.value == "") {
 				alert("사업자 등록번호를 입력하세요.");
 				busiNum.focus();
 				return false;
+			} else if (!numOnlyRegex.test(busiNum.value)) {
+				alert("사업자 등록번호는 숫자만 입력해 주세요.");
+				busiNum.value = "";
+				busiNum.focus();
+			    return false;
+			}
+			
+			if (!shelterDesFile.value) {
+				alert("사업자 등록증을 업로드 해주세요.");
+			    return false;
 			}
 		}
 		
@@ -196,7 +215,6 @@
  		let emailVal = $("#emailId").val() + "@" +$("#emailDomain").val();
  		$("#email").val(emailVal);
 	}
-	
 </script>
 </head>
 <body>
@@ -253,15 +271,15 @@
 				<fmt:formatDate var="year" value="<%=new java.util.Date() %>" pattern="yyyy" />
 				<fmt:parseNumber var="endYear" value="${year }" pattern="####"/>
 				<div>
-					<form:hidden path="birthday" value="" />
+					<form:hidden path="birthday" value="0000/00/00"/>
 					<input type="text" class="form-control" id="birthdayStr" placeholder="생년월일" disabled="disabled">
-					<select class="custom-select" id="year">
+					<select class="custom-select" id="year" onchange="set_birthday()">
 						<option selected="selected">연</option>
 						<c:forEach var="i" begin="1900" end="${endYear }">
 							<option value="${i }">${i }</option>
 						</c:forEach>
 					</select>
-					<select class="custom-select" id="month">
+					<select class="custom-select" id="month" onchange="set_birthday()">
 						<option selected="selected">월</option>
 						<c:forEach var="i" begin="1" end="12">
 							<option value="${i }">${i }</option>
@@ -313,7 +331,7 @@
 	   			<small style="color: red;"><form:errors path="busiNum" /></small>
 	   			<br>
 	   			[사업자 등록증 업로드]
-				<input type="file" name="shelterDesFile" class="mt-2">
+				<input type="file" id="shelterDesFile" name="shelterDesFile" class="mt-2">
 			</div>
 			<div class="form-group form-check mt-3">
 				<input type="checkbox" class="form-check-input" id="termChk">

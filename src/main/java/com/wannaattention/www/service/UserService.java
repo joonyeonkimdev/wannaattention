@@ -30,31 +30,34 @@ public class UserService {
 	
 	// 회원가입
 	public void insertUser(User user, HttpServletRequest request) {
-		System.out.println("서블릿 콘텍스트" + request.getServletContext());
-		System.out.println("리얼 루트 경로" + request.getServletContext().getRealPath("/"));
-		
 		// 임시 파일 -> 프로필 파일 업로드
-		String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/" + user.getProfileFilename();
-		String newFilePath = request.getServletContext().getRealPath("/") + "profileFile/" + user.getId() + "_profile";
-		File tempProfileFile = new File(tempFilePath);
-		File newProfileFile = new File(newFilePath);
-		if (tempProfileFile.exists()) {
-			try {
-				Files.copy(tempProfileFile.toPath(), newProfileFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-			} catch (IOException e) {
-				e.printStackTrace();
+		if (user.getProfileFilename() != null && !user.getProfileFilename().isEmpty()) {
+			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/" + user.getProfileFilename();
+			String newFilePath = request.getServletContext().getRealPath("/") + "profileFile/" + user.getId() + "_profile" + user.getProfileFilename().substring(user.getProfileFilename().lastIndexOf("."));
+			File tempProfileFile = new File(tempFilePath);
+			File newProfileFile = new File(newFilePath);
+			if (tempProfileFile.exists()) {
+				if (!newProfileFile.exists()) {
+					newProfileFile.mkdirs();
+				}
+				try {
+					Files.copy(tempProfileFile.toPath(), newProfileFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					user.setProfileFilename(user.getId() + "_profile" + user.getProfileFilename().substring(user.getProfileFilename().lastIndexOf(".")));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			if (newProfileFile.exists()) {
+				tempProfileFile.delete();
+			}	
 		}
-		if (newProfileFile.exists()) {
-			tempProfileFile.delete();
-		}
-		user.setProfileFilename(user.getId() + "_profile");
 		
 		// 사업자 등록증 업로드
 		if(user.getShelterDesFile() != null && !user.getShelterDesFile().isEmpty()) {
 			String shelterDocUploadPath = request.getServletContext().getRealPath("/") + "shelterDocsFile/";
 			uploadFileCreat(user.getShelterDesFile(), shelterDocUploadPath);
-			File currentDocFile = new File(shelterDocUploadPath + user.getShelterDesFile());
+			user.setShelterDesFilename(user.getShelterDesFile().getOriginalFilename());
+			File currentDocFile = new File(shelterDocUploadPath + user.getShelterDesFilename());
 			File newDocFile = new File(shelterDocUploadPath + user.getId() + "_shelterDoc");
 			try {
 				Files.copy(currentDocFile.toPath(), newDocFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
@@ -64,7 +67,7 @@ public class UserService {
 			if (currentDocFile.exists()) {
 				currentDocFile.delete();
 			}
-			user.setShelterDesFilename(user.getId() + "_shelterDoc");
+			user.setShelterDesFilename(user.getId() + "_shelterDoc" + user.getShelterDesFilename().substring(user.getShelterDesFilename().lastIndexOf(".")));
 		}
 		int maxUserNum = dao.selectMaxUserNum();
 		user.setUserNum(maxUserNum+1);
