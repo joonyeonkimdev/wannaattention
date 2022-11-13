@@ -8,6 +8,7 @@ import java.nio.file.StandardCopyOption;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +20,9 @@ public class UserService {
 	
 	@Autowired
 	UserDAO dao;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	// 임시폴더에 임시파일 저장
 	public void tempUpload(MultipartFile tempFile, HttpServletRequest request) {
@@ -69,8 +73,12 @@ public class UserService {
 			}
 			user.setShelterDesFilename(user.getId() + "_shelterDoc" + user.getShelterDesFilename().substring(user.getShelterDesFilename().lastIndexOf(".")));
 		}
+		
+		// 회원등록
 		int maxUserNum = dao.selectMaxUserNum();
 		user.setUserNum(maxUserNum+1);
+		String encPw = encoder.encode(user.getPw());
+		user.setPw(encPw);
 		dao.insertUser(user);
 	}
 	
