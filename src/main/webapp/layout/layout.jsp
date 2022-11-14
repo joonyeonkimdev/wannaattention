@@ -75,8 +75,7 @@
 					</c:if> 
 					<c:if test="${!empty sessionScope.loginUser}">
 						<img src="../resources/images/profile_default_pic.png" width="30" height="30" class="d-inline-block align-top" alt="">
-						${sessionScope.loginUser.name}님,<br>
-						반갑습니다.&nbsp;&nbsp;
+						${sessionScope.loginUser.name}님<br>
 						<a href="${path}/user/logout">로그아웃</a>
 					</c:if>
 				</span>
