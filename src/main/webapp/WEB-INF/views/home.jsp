@@ -49,7 +49,7 @@
 				<h5 class="card-title"><strong>도움의 손길</strong></h5>
 				<p class="card-text">
 					후원과 봉사활동을 신청할 수 있습니다.<br>
-					멀리서나마 도움의 손길을 보내주세요.<br>
+					멀리서나마 도움의 손길을 보내주세요.<br> .gitignore 적용테스트
 				</p>
 			</div>
 		</div>
