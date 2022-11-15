@@ -9,12 +9,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<style type="text/css">
-	.form-group {
-		float: none;
-		margin: 0 auto;
-	}
-</style>
 <script type="text/javascript">
 	function pickUserType(num) {
 		if (num == "0") {

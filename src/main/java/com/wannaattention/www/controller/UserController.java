@@ -1,6 +1,7 @@
 package com.wannaattention.www.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,13 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
+	@GetMapping("*")
+	public ModelAndView getUser() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(new User());
+		return mav;
+	}
+	
 	@GetMapping("tempUpload")
 	public String tempUpload() {
 		return null;
@@ -32,13 +40,6 @@ public class UserController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("filename", tempFile.getOriginalFilename());
 		mav.setViewName("user/tempUploadDone");
-		return mav;
-	}
-	
-	@GetMapping("join")
-	public ModelAndView getUser() {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject(new User());
 		return mav;
 	}
 	
@@ -75,9 +76,28 @@ public class UserController {
 			return mav;
 		}
 		mav.setViewName("redirect:welcome");
+		request.getSession().setAttribute("userNickname", user.getNickname());
 		return mav;
 	}
 	
+	@RequestMapping("welcome")
+	public String welcome() {
+		return null;
+	}
+	
+	@PostMapping("login")
+	public ModelAndView login(@Valid User user, BindingResult bresult, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(bresult.hasErrors()) {
+			mav.getModel().putAll(bresult.getModel());
+			bresult.reject("error.input.login");
+			return mav;
+		}
+		
+		return null;
+		
+		
+	}
 	
 	
 	
