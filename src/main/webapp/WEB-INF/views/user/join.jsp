@@ -73,6 +73,10 @@
 		let termChk = document.getElementById("termChk");
 		let privacyChk = document.getElementById("privacyChk");
 		let shelterDesFile = document.getElementById("shelterDesFile");
+		let ques1 = document.getElementById("ques1");
+		let ques2 = document.getElementById("ques2");
+		let ques3 = document.getElementById("ques3");
+		
 		
 		let pwRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/; //비밀번호 영문자+숫자+특수조합(8~25자리 입력) 정규식
 		let numOnlyRegex = /^[0-9]+$/; //숫자만 입력하는 정규식
@@ -193,6 +197,22 @@
 				alert("사업자 등록증을 업로드 해주세요.");
 			    return false;
 			}
+		}
+		
+		if (!ques1.value) {
+			alert("보안질문 답을 입력하세요. 보안질문은 ID/PW 찾기 시 이용됩니다.");
+			ques1.focus();
+			return false;
+		}
+		if (!ques2.value) {
+			alert("보안질문 답을 입력하세요. 보안질문은 ID/PW 찾기 시 이용됩니다.");
+			ques2.focus();
+			return false;
+		}
+		if (!ques3.value) {
+			alert("보안질문 답을 입력하세요. 보안질문은 ID/PW 찾기 시 이용됩니다.");
+			ques3.focus();
+			return false;
 		}
 		
 		if (!termChk.checked) {
@@ -326,6 +346,18 @@
 	   			<br>
 	   			[사업자 등록증 업로드]
 				<input type="file" id="shelterDesFile" name="shelterDesFile" class="mt-2">
+			</div>
+			<div class="form-group col-lg-4 mt-3">
+				<form:input path="ques1" class="form-control" placeholder="태어난 도시 이름은?" />
+	   			<small style="color: red;"><form:errors path="ques1" /></small>
+			</div>
+			<div class="form-group col-lg-4 mt-3">
+				<form:input path="ques2" class="form-control" placeholder="학창시절 별명은?" />
+	   			<small style="color: red;"><form:errors path="ques2" /></small>
+			</div>
+			<div class="form-group col-lg-4 mt-3">
+				<form:input path="ques3" class="form-control" placeholder="첫 애완동물 이름은?" />
+	   			<small style="color: red;"><form:errors path="ques3" /></small>
 			</div>
 			<div class="form-group form-check mt-3">
 				<input type="checkbox" class="form-check-input" id="termChk">
