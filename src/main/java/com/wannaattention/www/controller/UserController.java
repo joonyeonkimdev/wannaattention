@@ -86,17 +86,43 @@ public class UserController {
 	}
 	
 	@PostMapping("login")
-	public ModelAndView login(@Valid User user, BindingResult bresult, HttpSession session) {
+	public ModelAndView login(User user, BindingResult bindingresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		if(bresult.hasErrors()) {
-			mav.getModel().putAll(bresult.getModel());
-			bresult.reject("error.input.login");
+		// 입력값 유효성 검사
+		if(user.getId() == null || user.getId().equals("") || user.getPw() == null || user.getPw().equals("")) {
+			bindingresult.rejectValue("id", "error.login");
+		}
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.login.id");
 			return mav;
 		}
-		
-		return null;
-		
-		
+	
+		// id 존재 확인
+		 User dbUser = service.selectUser(user.getId());
+		 if (dbUser == null) {
+			 bindingresult.reject("error.login.id");
+			 mav.getModel().putAll(bindingresult.getModel());
+			 return mav;
+		 }
+		 
+		 // 비밀번호 비교
+		 boolean pwFlag = service.login(user);
+		 if (pwFlag) {
+			 session.setAttribute("loginUser", dbUser);
+		 } else {
+			 bindingresult.reject("error.login.pw");
+			 mav.getModel().putAll(bindingresult.getModel());
+			 return mav;
+		 }
+		mav.setViewName("redirect:/");
+		return mav;
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("loginUser");
+		return "redirect:/";
 	}
 	
 	

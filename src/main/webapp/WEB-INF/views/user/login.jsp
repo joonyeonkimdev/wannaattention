@@ -9,29 +9,15 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <script type="text/javascript">
-	function onSubmit() {
-		let id = document.getElementById("id");
-		let pw = document.getElementById("pw");
-		
-		if (!id.value) {
-			alert("아이디를 입력하세요.");
-			id.focus();
-			return false;
-		}
-		
-		if (!pw.value) {
-			alert("비밀번호를 입력하세요.");
-			id.focus();
-			return false;
-		}
-	}
+
+}
 </script>
 </head>
 <body>
 	<div class="container">
 		<h2>로그인</h2>
 		<hr>
-		<form:form modelAttribute="user" action="login" name="f" onsubmit="return onSubmit();">
+		<form:form modelAttribute="user" action="login" name="f" method="post" onsubmit="return onSubmit();">
 			<spring:hasBindErrors name="user">
 				<font color="red">
 	            	<c:forEach items="${errors.globalErrors }" var="error">

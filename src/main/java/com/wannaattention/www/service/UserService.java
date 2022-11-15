@@ -99,6 +99,11 @@ public class UserService {
 	public User selectUser(String id) {
 		return dao.selectUser(id);
 	}
+
+	public boolean login(User user) {
+		User dbUser = dao.selectUser(user.getId());
+		return encoder.matches(user.getPw(), dbUser.getPw());
+	}
 	
 	
 

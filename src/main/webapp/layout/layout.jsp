@@ -80,8 +80,9 @@
 						<a href="${path}/user/join">회원가입</a>
 					</c:if> 
 					<c:if test="${!empty sessionScope.loginUser}">
+						&nbsp;&nbsp;
 						<img src="../resources/images/profile_default_pic.png" width="30" height="30" class="d-inline-block align-top" alt="">
-						${sessionScope.loginUser.name}님<br>
+						<br>
 						<a href="${path}/user/logout">로그아웃</a>
 					</c:if>
 				</span>
