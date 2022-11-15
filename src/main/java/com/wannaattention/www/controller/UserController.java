@@ -51,7 +51,7 @@ public class UserController {
 	@RequestMapping("idDuplChkDone")
 	public ModelAndView idDuplChkDone(String id) {
 		ModelAndView mav = new ModelAndView();
-		User user = service.selectUser(id);
+		User user = service.selectUserById(id);
 		mav.addObject("user", user);
 		mav.addObject("id", id);
 		return mav;
@@ -99,7 +99,7 @@ public class UserController {
 		}
 	
 		// id 존재 확인
-		 User dbUser = service.selectUser(user.getId());
+		 User dbUser = service.selectUserById(user.getId());
 		 if (dbUser == null) {
 			 bindingresult.reject("error.login.id");
 			 mav.getModel().putAll(bindingresult.getModel());
@@ -125,7 +125,64 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@PostMapping("idSearch")
+	public ModelAndView idSearch(User user) {
+		ModelAndView mav = new ModelAndView();
+		User dbUser = service.selectUserByEmail(user.getEmail());
+		if (dbUser != null && dbUser.getQues1().equals(user.getQues1()) 
+							&& dbUser.getQues2().equals(user.getQues2()) 
+							&& dbUser.getQues3().equals(user.getQues3())) {
+			mav.addObject("user", dbUser);
+		} else {
+			mav.addObject("user", null);
+		}
+		mav.setViewName("user/idsResult");
+		return mav;
+	}
 	
+	@RequestMapping("idsResult")
+	public String idsResult() {
+		return null;
+	}
+	
+	@PostMapping("pwSearch")
+	public ModelAndView pwSearch(User user) {
+		ModelAndView mav = new ModelAndView();
+		User dbUser = service.selectUserById(user.getId());
+		if (dbUser != null && dbUser.getQues1().equals(user.getQues1()) 
+							&& dbUser.getQues2().equals(user.getQues2()) 
+							&& dbUser.getQues3().equals(user.getQues3())) {
+			mav.addObject("user", dbUser);
+		} else {
+			mav.addObject("user", null);
+		}
+		mav.setViewName("user/initiPw");
+		return mav;
+	}
+	
+	@RequestMapping("initiPw")
+	public ModelAndView initializePw(User user, BindingResult bindingresult, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(user.getPw() == null || user.getPw().equals("")) {
+			bindingresult.rejectValue("pw", "error.pw.combination");
+		}
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.pw.combination");
+			return mav;
+		}
+		try {
+			service.updateUserPw(user);
+		} catch(Exception e) {
+			e.printStackTrace();
+			bindingresult.rejectValue("pw", "error.initial.pw");
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.initial.pw");
+			return mav;
+		}
+		mav.setViewName("redirect:initiPwDone");
+		return mav;
+	}
 	
 	
 	

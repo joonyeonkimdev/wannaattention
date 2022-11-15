@@ -2,6 +2,7 @@ package com.wannaattention.www.dao;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.wannaattention.www.vo.User;
 
@@ -15,5 +16,11 @@ public interface UserMapper {
 	public void insertUser(User user);
 
 	@Select("SELECT * FROM USER_TB WHERE ID = #{id}")
-	public User selectUser(String id);
+	public User selectUserById(String id);
+
+	@Select("SELECT * FROM USER_TB WHERE EMAIL = #{email}")
+	public User selectUserByEmail(String email);
+
+	@Update("UPDATE USER_TB SET PW = #{PW} WHERE USER_NUM = #{userNum}")
+	public Object updateUserPw(User user);
 }

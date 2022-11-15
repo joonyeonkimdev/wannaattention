@@ -24,8 +24,16 @@ public class UserDAO {
 		template.getMapper(UserMapper.class).insertUser(user);
 	}
 
-	public User selectUser(String id) {
-		return template.getMapper(UserMapper.class).selectUser(id);
+	public User selectUserById(String id) {
+		return template.getMapper(UserMapper.class).selectUserById(id);
+	}
+
+	public User selectUserByEmail(String email) {
+		return template.getMapper(UserMapper.class).selectUserByEmail(email);
+	}
+
+	public void updateUserPw(User user) {
+		template.getMapper(UserMapper.class).updateUserPw(user);
 	}
 
 }

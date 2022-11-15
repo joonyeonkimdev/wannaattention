@@ -16,7 +16,7 @@
 		<p class="lead">입양으로 수 많은 생명을 살릴 수 있습니다.</p>
 		<hr class="my-4">
 		<p>당신의 작은 관심이 필요합니다.</p>
-		<a class="btn btn-primary btn-lg" href="/animal/animalList" role="button">입양하기</a>
+		<a class="btn btn-success btn-lg" href="/animal/animalList" role="button">입양하기</a>
 	</div>
 	<div class="card-deck">
 		<div class="card" style=" cursor: pointer;" onclick="location.href='/animal/animalList';">

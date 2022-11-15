@@ -240,7 +240,7 @@
 				<button type="button" class="btn btn-primary btn-sm" id="userType0" onclick="pickUserType(0)">일반 회원</button>
 				<button type="button" class="btn btn-secondary btn-sm" id="userType1" onclick="pickUserType(1)">보호소 회원</button>
 			</div>
-			<form:hidden path="userType" value="0"/>
+		<form:hidden path="userType" value="0"/>
 			
 			<div class="form-group col-lg-4 mt-5">
 				<img src="../../../resources/images/profile_default_pic.png" name="profileDefaultPic" width="150" height="150">
@@ -348,15 +348,15 @@
 				<input type="file" id="shelterDesFile" name="shelterDesFile" class="mt-2">
 			</div>
 			<div class="form-group col-lg-4 mt-3">
-				<form:input path="ques1" class="form-control" placeholder="태어난 도시 이름은?" />
+				<form:input path="ques1" class="form-control" placeholder="보안질문1: 태어난 도시 이름은?" />
 	   			<small style="color: red;"><form:errors path="ques1" /></small>
 			</div>
 			<div class="form-group col-lg-4 mt-3">
-				<form:input path="ques2" class="form-control" placeholder="학창시절 별명은?" />
+				<form:input path="ques2" class="form-control" placeholder="보안질문2: 학창시절 별명은?" />
 	   			<small style="color: red;"><form:errors path="ques2" /></small>
 			</div>
 			<div class="form-group col-lg-4 mt-3">
-				<form:input path="ques3" class="form-control" placeholder="첫 애완동물 이름은?" />
+				<form:input path="ques3" class="form-control" placeholder="보안질문3: 첫 애완동물 이름은?" />
 	   			<small style="color: red;"><form:errors path="ques3" /></small>
 			</div>
 			<div class="form-group form-check mt-3">

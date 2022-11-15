@@ -96,14 +96,23 @@ public class UserService {
 		}
 	}
 
-	public User selectUser(String id) {
-		return dao.selectUser(id);
+	public User selectUserById(String id) {
+		return dao.selectUserById(id);
 	}
 
 	public boolean login(User user) {
-		User dbUser = dao.selectUser(user.getId());
+		User dbUser = dao.selectUserById(user.getId());
 		return encoder.matches(user.getPw(), dbUser.getPw());
 	}
+
+	public User selectUserByEmail(String email) {
+		return dao.selectUserByEmail(email);
+	}
+
+	public void updateUserPw(User user) {
+		dao.updateUserPw(user);
+	}
+
 	
 	
 
