@@ -34,43 +34,42 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">입양</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">입양하기</a>
-							<a class="dropdown-item" href="#">입양동물 등록</a>
+							<a class="dropdown-item" href="animal/animalList">입양하기</a>
+							<a class="dropdown-item" href="animal/animalRegister">입양동물 등록</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">실종동물 찾기</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">실종 동물 보기</a>
-							<a class="dropdown-item" href="#">실종 동물 신고</a>
+							<a class="dropdown-item" href="animal/missingAnimalList">실종 동물 보기</a>
+							<a class="dropdown-item" href="animal/missingAnimalWrite">실종 동물 신고</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">도움의 손길</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">후원하기</a>
-							<a class="dropdown-item" href="#">자원봉사</a>
+							<a class="dropdown-item" href="touchOfAid/donate">후원하기</a>
+							<a class="dropdown-item" href="touchOfAid/voluteer">자원봉사</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">정보 	게시판</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">동물 병원</a>
-							<a class="dropdown-item" href="#">동물 호텔</a>
-							<a class="dropdown-item" href="#">동물 미용실</a>
-							<a class="dropdown-item" href="#">동물 축제</a>
-							<a class="dropdown-item" href="#">동물 놀이터</a>
+							<a class="dropdown-item" href="info/animalHpitalList">동물 병원</a>
+							<a class="dropdown-item" href="info/animalHotelList">동물 호텔</a>
+							<a class="dropdown-item" href="info/animalSalonList">동물 미용실</a>
+							<a class="dropdown-item" href="info/animalFestList">동물 축제</a>
+							<a class="dropdown-item" href="info/animalPlaygroundList">동물 놀이터</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">커뮤니티</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="#">공지사항</a>
-							<a class="dropdown-item" href="#">후원금 사용내역</a>
-							<a class="dropdown-item" href="#">QNA</a>
-							<a class="dropdown-item" href="#">자유게시판</a>
-							<a class="dropdown-item" href="#">입양 후기</a>
-							<a class="dropdown-item" href="#">중고나눔</a>
+							<a class="dropdown-item" href="community/noticeList">공지사항</a>
+							<a class="dropdown-item" href="community/usageStatList">후원금 사용내역</a>
+							<a class="dropdown-item" href="community/qnaList">QNA</a>
+							<a class="dropdown-item" href="community/freeList">자유게시판</a>
+							<a class="dropdown-item" href="community/epilogueList">입양 후기</a>
 						</div>
 					</li>
 				</ul>

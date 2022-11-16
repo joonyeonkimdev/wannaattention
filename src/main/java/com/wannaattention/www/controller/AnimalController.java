@@ -21,5 +21,7 @@ public class AnimalController {
 		mav.addObject(new Animal());
 		return mav;
 	}
+	
+	
 
 }
