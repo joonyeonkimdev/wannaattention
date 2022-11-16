@@ -171,12 +171,15 @@ public class User {
 	
 	@Override
 	public String toString() {
-		return "UserVO [userNum=" + userNum + ", userType=" + userType + ", id=" + id + ", pw=" + pw + ", name=" + name
+		return "User [userNum=" + userNum + ", userType=" + userType + ", id=" + id + ", pw=" + pw + ", name=" + name
 				+ ", nickname=" + nickname + ", birthday=" + birthday + ", email=" + email + ", phone=" + phone
 				+ ", tel=" + tel + ", postNum=" + postNum + ", address=" + address + ", signupDate=" + signupDate
-				+ ", busiNum=" + busiNum + ", profileFilename=" + profileFilename + ", shelterDesFilename="
-				+ shelterDesFilename + ", profileFile=" + profileFile + ", shelterDesFile=" + shelterDesFile + "]";
+				+ ", busiNum=" + busiNum + ", ques1=" + ques1 + ", ques2=" + ques2 + ", ques3=" + ques3
+				+ ", profileFilename=" + profileFilename + ", shelterDesFilename=" + shelterDesFilename
+				+ ", profileFile=" + profileFile + ", shelterDesFile=" + shelterDesFile + "]";
 	}
+	
+	
 	
 	
 }

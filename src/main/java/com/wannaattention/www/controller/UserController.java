@@ -80,11 +80,6 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping("welcome")
-	public String welcome() {
-		return null;
-	}
-	
 	@PostMapping("login")
 	public ModelAndView login(User user, BindingResult bindingresult, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -156,9 +151,14 @@ public class UserController {
 	public ModelAndView pwSearch(User user) {
 		ModelAndView mav = new ModelAndView();
 		User dbUser = service.selectUserById(user.getId());
+		System.out.println("dbUser");
+		System.out.println(dbUser);
 		if (dbUser != null && dbUser.getQues1().equals(user.getQues1()) 
 							&& dbUser.getQues2().equals(user.getQues2()) 
 							&& dbUser.getQues3().equals(user.getQues3())) {
+			user.setUserNum(dbUser.getUserNum());
+			System.out.println("user");
+			System.out.println(user);
 			mav.addObject("user", user);
 		} else {
 			mav.addObject("user", null);
@@ -167,15 +167,10 @@ public class UserController {
 		return mav;
 	}
 	
-	@GetMapping("initiPw")
-	public ModelAndView initiPw(User user) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("user", user);
-		return mav;
-	}
-	
 	@PostMapping("initiPw")
 	public ModelAndView initiPw(User user, BindingResult bindingresult) {
+		System.out.println("초기화 user post");
+		System.out.println(user);
 		ModelAndView mav = new ModelAndView();
 		if(user.getPw() == null || user.getPw().equals("")) {
 			bindingresult.rejectValue("pw", "error.pw.combination");

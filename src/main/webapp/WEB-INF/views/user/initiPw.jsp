@@ -45,6 +45,7 @@
 						</c:forEach>
 					</font>
 				</spring:hasBindErrors>
+				<form:hidden path="userNum"/>
 				<div class="form-group col-lg-4 mt-3">
 					<form:password path="pw" class="form-control" placeholder="새로운 비밀번호" />
 		   			<input type="password" id="pwCheck" class="form-control" placeholder="비밀번호 확인">
