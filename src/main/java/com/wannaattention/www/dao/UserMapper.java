@@ -21,6 +21,6 @@ public interface UserMapper {
 	@Select("SELECT * FROM USER_TB WHERE EMAIL = #{email}")
 	public User selectUserByEmail(String email);
 
-	@Update("UPDATE USER_TB SET PW = #{PW} WHERE USER_NUM = #{userNum}")
-	public Object updateUserPw(User user);
+	@Update("UPDATE USER_TB SET PW = #{pw} WHERE USER_NUM = #{userNum}")
+	public void updateUserPw(User user);
 }

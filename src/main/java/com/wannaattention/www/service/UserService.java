@@ -110,6 +110,8 @@ public class UserService {
 	}
 
 	public void updateUserPw(User user) {
+		String encPw = encoder.encode(user.getPw());
+		user.setPw(encPw);
 		dao.updateUserPw(user);
 	}
 

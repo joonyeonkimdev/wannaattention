@@ -37,7 +37,7 @@
 	<div class="container">
 		<c:choose>
 			<c:when test="${user != null }">
-			<form:form modelAttribute="user" action="initializePw" name="f" method="post" onsubmit="return onSubmit();">
+			<form:form modelAttribute="user" action="initiPw" name="f" method="post" onsubmit="return onSubmit();">
 				<spring:hasBindErrors name="user">
 					<font color="red">
 		            	<c:forEach items="${errors.globalErrors }" var="error">

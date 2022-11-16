@@ -145,6 +145,13 @@ public class UserController {
 		return null;
 	}
 	
+	@GetMapping("pwSearch")
+	public ModelAndView pwSearch() {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject(new User());
+		return mav;
+	}
+	
 	@PostMapping("pwSearch")
 	public ModelAndView pwSearch(User user) {
 		ModelAndView mav = new ModelAndView();
@@ -152,7 +159,7 @@ public class UserController {
 		if (dbUser != null && dbUser.getQues1().equals(user.getQues1()) 
 							&& dbUser.getQues2().equals(user.getQues2()) 
 							&& dbUser.getQues3().equals(user.getQues3())) {
-			mav.addObject("user", dbUser);
+			mav.addObject("user", user);
 		} else {
 			mav.addObject("user", null);
 		}
@@ -160,8 +167,15 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping("initiPw")
-	public ModelAndView initializePw(User user, BindingResult bindingresult, HttpSession session) {
+	@GetMapping("initiPw")
+	public ModelAndView initiPw(User user) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("user", user);
+		return mav;
+	}
+	
+	@PostMapping("initiPw")
+	public ModelAndView initiPw(User user, BindingResult bindingresult) {
 		ModelAndView mav = new ModelAndView();
 		if(user.getPw() == null || user.getPw().equals("")) {
 			bindingresult.rejectValue("pw", "error.pw.combination");
