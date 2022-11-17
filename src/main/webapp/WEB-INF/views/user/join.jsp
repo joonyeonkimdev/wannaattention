@@ -39,7 +39,7 @@
 	}
 	
 	// 생일 선택값 세팅
-	function set_birthday(timepoint) {
+	function set_birthday() {
 		let year = document.getElementById("year");
 		let month = document.getElementById("month");
 		let date = document.getElementById("date");
@@ -48,7 +48,7 @@
 		
 		if (year.value && month.value && date.value) {
 			if (year.value != "연" && month.value != "월" && date.value != "일" ) {
-				birthdayStr.value = year.value + "/" + month.value + "/" + date.value;
+				birthdayStr.value = year.value + "-" + month.value + "-" + date.value;
 				birthday.value = birthdayStr.value;
 			}
 		}

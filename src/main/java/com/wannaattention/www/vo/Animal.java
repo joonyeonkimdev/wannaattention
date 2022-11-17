@@ -30,6 +30,7 @@ public class Animal {
 	private String adoptStep;
 	private String profileFilename;
 	private MultipartFile profileFile;
+	
 	public int getAnimalNum() {
 		return animalNum;
 	}
