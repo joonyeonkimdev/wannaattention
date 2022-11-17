@@ -19,18 +19,10 @@ import com.wannaattention.www.vo.User;
 public class UserService {
 	
 	@Autowired
-	UserDAO dao;
+	private UserDAO dao;
 	
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-
-	// 임시폴더에 임시파일 저장
-	public void tempUpload(MultipartFile tempFile, HttpServletRequest request) {
-		if(tempFile != null && !tempFile.isEmpty()) {
-			String tempUploadPath = request.getServletContext().getRealPath("/") + "tempUploadFile/";
-			uploadFileCreat(tempFile, tempUploadPath);
-		}
-	}
 	
 	// 회원가입
 	public void insertUser(User user, HttpServletRequest request) {

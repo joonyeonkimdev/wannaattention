@@ -28,8 +28,8 @@
 	
 	// 프로필 업로드 팝업
 	function uploadPopup() {
-		let op = "width=300,height=300,left=50,top=150";
-		open("tempUpload","",op);
+		let op = "width=500,height=300,left=50,top=150";
+		open("/tempUpload","",op);
 	}
 	
 	// 아이디 중복확인 팝업
@@ -240,7 +240,8 @@
 				<button type="button" class="btn btn-primary btn-sm" id="userType0" onclick="pickUserType(0)">일반 회원</button>
 				<button type="button" class="btn btn-secondary btn-sm" id="userType1" onclick="pickUserType(1)">보호소 회원</button>
 			</div>
-		<form:hidden path="userType" value="0"/>
+			
+			<form:hidden path="userType" value="0"/>
 			
 			<div class="form-group col-lg-4 mt-5">
 				<img src="../../../resources/images/profile_default_pic.png" name="profileDefaultPic" width="150" height="150">

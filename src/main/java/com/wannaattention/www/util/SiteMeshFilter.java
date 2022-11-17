@@ -10,6 +10,8 @@ public class SiteMeshFilter extends ConfigurableSiteMeshFilter {
 	@Override
 	protected void applyCustomConfiguration(SiteMeshFilterBuilder builder) {
 		builder.addDecoratorPath("/*", "/layout/layout.jsp").addExcludedPath("/user/tempUpload*")
-															.addExcludedPath("/user/idDuplChk*");
+															.addExcludedPath("/user/idDuplChk*")
+															.addExcludedPath("/animal/tempUpload*");
+												
 	}
 }

@@ -2,23 +2,34 @@ package com.wannaattention.www.vo;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class Animal {
 	private int animalNum;
 	private String name;
 	private int age;
+	@NotEmpty(message = "동물 종류는 필수 입력사항입니다.")
 	private String species;
 	private String breed;
-	private int gender;
-	private int neutralization;
-	private int vacccination;
+	@NotEmpty(message = "동물 성별은 필수 입력사항입니다.")
+	private String gender;
+	@NotEmpty(message = "중성화 여부는 필수 입력사항입니다.")
+	private String neutralization;
+	@NotEmpty(message = "접종 여부는 필수 입력사항입니다.")
+	private String vacccination;
+	@NotNull(message = "보호소 입소일자는 필수 입력사항입니다.")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date enterDate;
+	@NotNull(message = "보호기간 종료일자는 필수 입력사항입니다.")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date protectEndDate;
-	private int adoptStep;
+	private String adoptStep;
 	private String profileFilename;
 	private MultipartFile profileFile;
-	
 	public int getAnimalNum() {
 		return animalNum;
 	}
@@ -49,22 +60,22 @@ public class Animal {
 	public void setBreed(String breed) {
 		this.breed = breed;
 	}
-	public int getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(int gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public int getNeutralization() {
+	public String getNeutralization() {
 		return neutralization;
 	}
-	public void setNeutralization(int neutralization) {
+	public void setNeutralization(String neutralization) {
 		this.neutralization = neutralization;
 	}
-	public int getVacccination() {
+	public String getVacccination() {
 		return vacccination;
 	}
-	public void setVacccination(int vacccination) {
+	public void setVacccination(String vacccination) {
 		this.vacccination = vacccination;
 	}
 	public Date getEnterDate() {
@@ -79,10 +90,10 @@ public class Animal {
 	public void setProtectEndDate(Date protectEndDate) {
 		this.protectEndDate = protectEndDate;
 	}
-	public int getAdoptStep() {
+	public String getAdoptStep() {
 		return adoptStep;
 	}
-	public void setAdoptStep(int adoptStep) {
+	public void setAdoptStep(String adoptStep) {
 		this.adoptStep = adoptStep;
 	}
 	public String getProfileFilename() {
@@ -105,6 +116,10 @@ public class Animal {
 				+ vacccination + ", enterDate=" + enterDate + ", protectEndDate=" + protectEndDate + ", adoptStep="
 				+ adoptStep + ", profileFilename=" + profileFilename + ", profileFile=" + profileFile + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

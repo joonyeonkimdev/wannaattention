@@ -1,10 +1,13 @@
 error.login.password=비밀번호를 확인하세요.
 error.input.user=회원가입 입력항목을 확인하세요.
+error.input.animal=동물등록 입력항목을 확인하세요.
 error.update.user=회원수정 입력항목을 확인하세요.
 error.input.login=로그인 입력항목을 확인하세요.
-typeMismatch.birthday=생년월일은 YYYY-MM-DD 형식으로 입력해 주세요.
+typeMismatch.enterDate=올바르지 않은 형식의 날짜입니다.
+typeMismatch.protectEndDate=올바르지 않은 형식의 날짜입니다.
 error.duplicate.user=중복된 아이디 입니다.
 error.join.user=회원가입 중 오류가 발생했습니다. 다시 시도해 주십시오.
+error.register.animal=동물등록 중 오류가 발생했습니다. 다시 시도해 주십시오.
 error.initial.pw=비밀번호 초기화 중 오류가 발생했습니다. 다시 시도해 주십시오.
 error.login.pw=아이디 또는 비밀번호가 일치하지 않습니다.
 error.login.id=아이디 또는 비밀번호가 일치하지 않습니다.

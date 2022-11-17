@@ -20,26 +20,12 @@ import com.wannaattention.www.vo.User;
 @RequestMapping("user")
 public class UserController {
 	@Autowired
-	UserService service;
+	private UserService service;
 	
 	@GetMapping("*")
 	public ModelAndView getUser() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(new User());
-		return mav;
-	}
-	
-	@GetMapping("tempUpload")
-	public String tempUpload() {
-		return null;
-	}
-	
-	@PostMapping("tempUpload")
-	public ModelAndView tempUpload(MultipartFile tempFile, HttpServletRequest request) {
-		service.tempUpload(tempFile, request);
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("filename", tempFile.getOriginalFilename());
-		mav.setViewName("user/tempUploadDone");
 		return mav;
 	}
 	

@@ -35,6 +35,8 @@
 </head>
 <body>
 	<div class="container">
+		<h2>비밀번호 초기화</h2>
+		<hr>
 		<c:choose>
 			<c:when test="${user != null }">
 			<form:form modelAttribute="user" action="initiPw" name="f" method="post" onsubmit="return onSubmit();">

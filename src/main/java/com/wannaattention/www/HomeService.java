@@ -1,4 +1,4 @@
-package com.wannaattention.www.service;
+package com.wannaattention.www;
 
 import java.io.File;
 
@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.wannaattention.www.dao.AnimalDAO;
-
 @Service
-public class AnimalService {
+public class HomeService {
 	@Autowired
-	private AnimalDAO dao;
+	private HomeDAO dao;
 	
-	// 임시 프로필 파일 업로드
+	// 임시폴더에 임시파일 저장
 	public void tempUpload(MultipartFile tempFile, HttpServletRequest request) {
 		if(tempFile != null && !tempFile.isEmpty()) {
 			String tempUploadPath = request.getServletContext().getRealPath("/") + "tempUploadFile/";
