@@ -51,6 +51,15 @@
 	    	<list><value>errMessages</value></list>
 	 	</property>
 	</bean>
+
+	<!-- 예외처리 bean -->
+	<bean id="exceptionHandler" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<value>
+				com.wannaattention.www.util.InterceptedException=exception
+			</value>
+		</property>
+	</bean>
 	
 	
 	

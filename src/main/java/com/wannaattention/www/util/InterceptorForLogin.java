@@ -15,8 +15,7 @@ public class InterceptorForLogin extends HandlerInterceptorAdapter {
 		User loginUser = (User)session.getAttribute("loginUser");
 		
 		if (loginUser == null) {
-			response.sendRedirect(request.getContextPath() + "/user/login");
-			return false;
+			throw new InterceptedException("로그인 후 이용 가능합니다.", "/user/login");
 		}
 		return super.preHandle(request, response, handler);
 	}

@@ -9,6 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<style type="text/css">
+	.profileDefaultPic {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+	}
+</style>
 <script type="text/javascript">
 	function pickUserType(num) {
 		if (num == "0") {
@@ -244,7 +251,7 @@
 			<form:hidden path="userType" value="0"/>
 			
 			<div class="form-group col-lg-4 mt-5">
-				<img src="../../../resources/images/profile_default_pic.png" name="profileDefaultPic" width="150" height="150">
+				<img src="../../../resources/images/profile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic">
 				<br>
 				프로필
 			</div>

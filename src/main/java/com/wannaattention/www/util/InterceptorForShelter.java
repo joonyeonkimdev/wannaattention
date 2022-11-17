@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.wannaattention.www.util.InterceptedException;
 import com.wannaattention.www.vo.User;
 
 public class InterceptorForShelter extends HandlerInterceptorAdapter {
@@ -14,9 +15,8 @@ public class InterceptorForShelter extends HandlerInterceptorAdapter {
 		HttpSession session = request.getSession();
 		User loginUser = (User)session.getAttribute("loginUser");
 		
-		if (loginUser == null) {
-			response.sendRedirect(request.getContextPath() + "/user/login");
-			return false;
+		if (loginUser.getUserType().equals("0")) {
+			throw new InterceptedException("보호소 회원만 이용 가능합니다.", "/");
 		}
 		return super.preHandle(request, response, handler);
 	}

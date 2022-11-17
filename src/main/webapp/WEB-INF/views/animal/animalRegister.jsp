@@ -9,6 +9,13 @@
 <head>
 <meta charset="UTF-8">
 <title>입양 동물 등록하기</title>
+<style type="text/css">
+	.profileDefaultPic {
+		width: 150px;
+		height: 150px;
+		border-radius: 50%;
+	}
+</style>
 <script type="text/javascript">
 	//프로필 업로드 팝업
 	function uploadPopup() {
@@ -147,7 +154,7 @@
 		<hr>
 		<form:form modelAttribute="animal" action="animalRegister" enctype="multipart/form-data" name="f" onsubmit="return onSubmit();">
 			<div class="form-group col-lg-4 mt-5">
-				<img src="../../../resources/images/profile_default_pic.png" name="profileDefaultPic" width="150" height="150">
+				<img src="../../../resources/images/profile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic">
 				<br>
 				프로필
 			</div>

@@ -51,6 +51,8 @@
 				<button type="submit" class="btn btn-success mt-3" id="submit">로그인</button>
 			</div>
 			<div class="mt-1">
+				<a href="join" style="color: black;"><small>회원가입</small></a>
+				/
 				<a href="idSearch" style="color: black;"><small>아이디</small></a>
 				·
 				<a href="pwSearch" style="color: black;"><small>비밀번호 찾기</small></a>
