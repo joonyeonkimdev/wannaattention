@@ -92,7 +92,7 @@
 		let numOnlyRegex = /^[0-9]+$/;
 		
 		if (!name.value) {
-			alert("이름을 입력하세요. 이름이 없다면 '없음'.");
+			alert("이름을 입력하세요. 보호소 내 동물끼리 구분해 주세요.");
 			name.focus();
 			return false;
 		}
@@ -164,6 +164,7 @@
 					</c:forEach>
 				</font>
 			</spring:hasBindErrors>
+			<form:hidden path="shelterNum" value="${loginUser.userNum }"/>
 			<div class="form-group col-lg-4 mt-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">이름</span>

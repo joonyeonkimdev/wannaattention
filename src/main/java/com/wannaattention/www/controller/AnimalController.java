@@ -37,7 +37,7 @@ public class AnimalController {
 			return mav;
 		}
 		try {
-//			service.insertAnimal(animal, request);
+			service.insertAnimal(animal, request);
 			mav.addObject("animal", animal);
 		} catch(Exception e) {
 			e.printStackTrace();

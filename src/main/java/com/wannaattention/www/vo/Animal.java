@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class Animal {
 	private int animalNum;
+	private int shelterNum;
 	private String name;
 	private int age;
 	@NotEmpty(message = "동물 종류는 필수 입력사항입니다.")
@@ -36,6 +37,12 @@ public class Animal {
 	}
 	public void setAnimalNum(int animalNum) {
 		this.animalNum = animalNum;
+	}
+	public int getShelterNum() {
+		return shelterNum;
+	}
+	public void setShelterNum(int shelterNum) {
+		this.shelterNum = shelterNum;
 	}
 	public String getName() {
 		return name;
@@ -112,11 +119,14 @@ public class Animal {
 	
 	@Override
 	public String toString() {
-		return "Animal [animalNum=" + animalNum + ", name=" + name + ", age=" + age + ", species=" + species
-				+ ", breed=" + breed + ", gender=" + gender + ", neutralization=" + neutralization + ", vacccination="
-				+ vacccination + ", enterDate=" + enterDate + ", protectEndDate=" + protectEndDate + ", adoptStep="
-				+ adoptStep + ", profileFilename=" + profileFilename + ", profileFile=" + profileFile + "]";
+		return "Animal [animalNum=" + animalNum + ", shelterNum=" + shelterNum + ", name=" + name + ", age=" + age
+				+ ", species=" + species + ", breed=" + breed + ", gender=" + gender + ", neutralization="
+				+ neutralization + ", vacccination=" + vacccination + ", enterDate=" + enterDate + ", protectEndDate="
+				+ protectEndDate + ", adoptStep=" + adoptStep + ", profileFilename=" + profileFilename
+				+ ", profileFile=" + profileFile + "]";
 	}
+	
+	
 	
 	
 	
