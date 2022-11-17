@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -72,6 +73,14 @@ public class AnimalService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public int animalCount() {
+		return dao.animalCount();
+	}
+
+	public List<Animal> animalList(Integer pageNum, int limit) {
+		return dao.animalList(pageNum, limit);
 	}
 	
 	

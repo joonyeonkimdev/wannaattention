@@ -1,6 +1,10 @@
 package com.wannaattention.www.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +53,32 @@ public class AnimalController {
 		return mav;
 	}
 	
+	@RequestMapping("animalList")
+	public ModelAndView animalList(Integer pageNum, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(pageNum == null || pageNum.toString().equals("")) {
+			   pageNum = 1;
+		}
+		
+		int limit = 10;
+		int listCount = service.animalCount(); // 동물 리스트 갯수
+		List<Animal> animalList = service.animalList(pageNum, limit); // 동물 리스트 가져오기 
+		
+		int maxPage = (int)((double)listCount/limit + 0.95); // 출력 최대 페이지
+		int startPage = (int)((pageNum/10.0 + 0.9) - 1) * 10 + 1; // 페이징 시작번호
+		int endPage = startPage + 9; // 페이징 끝번호
+		
+		if(endPage > maxPage) {
+			endPage = maxPage;
+		}
+		mav.addObject("pageNum", pageNum); 
+		mav.addObject("maxPage", maxPage); 
+		mav.addObject("startPage", startPage);
+		mav.addObject("endPage", endPage); 
+		mav.addObject("listCount", listCount);
+		mav.addObject("animalList", animalList);
+		return mav;
+	}
 	
 
 }

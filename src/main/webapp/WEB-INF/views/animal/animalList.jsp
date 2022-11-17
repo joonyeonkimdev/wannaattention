@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- /wannaattention/src/main/webapp/WEB-INF/views/board/animalList.jsp -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,7 +39,6 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col">번호</th>
 						<th scope="col">사진</th>
 						<th scope="col">이름</th>
 						<th scope="col">보호 종료 일자</th>
@@ -45,66 +46,22 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr onclick="location.href='animalDetail';">
-						<th scope="row">rownum</th>
-						<td>
-							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
-						</td>
-						<td>
-							${animal.name }이름
-						</td>
-						<td>
-							${animal.protectEndDate}보호 종료 일자
-						</td>
-						<td>
-							${shelter.name}보호소 이름
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">rownum</th>
-						<td>
-							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
-						</td>
-						<td>
-							${animal.name }이름
-						</td>
-						<td>
-							${animal.protectEndDate}보호 종료 일자
-						</td>
-						<td>
-							${shelter.name}보호소 이름
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">rownum</th>
-						<td>
-							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
-						</td>
-						<td>
-							${animal.name }이름
-						</td>
-						<td>
-							${animal.protectEndDate}보호 종료 일자
-						</td>
-						<td>
-							${shelter.name}보호소 이름
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">rownum</th>
-						<td>
-							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
-						</td>
-						<td>
-							${animal.name }이름
-						</td>
-						<td>
-							${animal.protectEndDate}보호 종료 일자
-						</td>
-						<td>
-							${shelter.name}보호소 이름
-						</td>
-					</tr>
+					<c:forEach var="animal" items="${animalList }">
+						<tr style="cursor: pointer;" onclick="location.href='animalDetail?num'+${animal.animalNum};">
+							<td>
+								<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
+							</td>
+							<td>
+								${animal.name }
+							</td>
+							<td>
+								<fmt:formatDate value="${animal.protectEndDate}" pattern="yyyy-MM-dd" />
+							</td>
+							<td>
+								${animal.shelterName}
+							</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 				<thead>
 					<tr>
@@ -121,11 +78,32 @@
 		<div class="row justify-content-center mt-5">
 			<nav>
 				<ul class="pagination">
-					<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+					<%-- 앞으로 --%>
+					<c:if test="${pageNum > 1}">
+						<li class="page-item">
+							<a class="page-link" href="animalList?pageNum=${pageNum - 1}">Previous</a>
+						</li>
+					</c:if>
+					<c:if test="${pageNum <= 1}">
+						<li class="page-item disabled"><a class="page-link">Previous</a></li>
+					</c:if>
+					
+					<%-- 페이징 --%>
+					<c:forEach var="a" begin="${startPage }" end="${endPage}">
+						<c:if test="${a == pageNum}">
+							<li class="page-item disabled"><a class="page-link">${a}</a></li>
+						</c:if>
+						<c:if test="${a != pageNum}">
+							<li class="page-item"><a class="page-link" href="animalList?pageNum=${a}">${a}</a></li>
+						</c:if>
+					</c:forEach>
+					<%-- 뒤로 --%>
+					<c:if test="${pageNum < maxPage}">
+						<li class="page-item"><a class="page-link" href="animalList?pageNum=${pageNum + 1}">Next</a></li>
+					</c:if>
+					<c:if test="${pageNum >= maxPage}">
+						<li class="page-item disabled"><a class="page-link">Next</a></li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

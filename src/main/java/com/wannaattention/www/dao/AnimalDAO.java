@@ -1,6 +1,7 @@
 package com.wannaattention.www.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -22,6 +23,19 @@ public class AnimalDAO {
 	public void insertAnimal(Animal animal) {
 		template.getMapper(AnimalMapper.class).insertAnimal(animal);
 		
+	}
+
+	public int animalCount() {
+		return template.getMapper(AnimalMapper.class).animalCount();
+	}
+
+	public List<Animal> animalList(Integer pageNum, int limit) {
+		int startRow = (pageNum - 1) * limit + 1; 
+		int endRow = startRow + limit - 1;
+		param.clear();
+		param.put("startRow", startRow);
+		param.put("endRow", endRow);
+		return template.getMapper(AnimalMapper.class).animalList(param);
 	}
 
 }
