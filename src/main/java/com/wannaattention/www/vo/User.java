@@ -3,8 +3,10 @@ package com.wannaattention.www.vo;
 import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class User {
@@ -18,6 +20,8 @@ public class User {
 	private String name;
 	@NotEmpty(message="사용자 닉네임은 필수 입력사항입니다.")
 	private String nickname;
+	@NotNull(message = "생년월일은 필수 입력사항입니다.")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date birthday;
 	@NotEmpty(message="이메일은 필수 입력사항입니다.")
 	private String email;

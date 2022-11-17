@@ -129,12 +129,12 @@
 		}
 		
 		if (userType.value == "0") {
-			if (birthday.value == "") {
+			if (!birthday.value) {
 				alert("생년월일을 선택하세요.");
 				return false;
 			}
 		} else {
-			birthday.value = new Date(null);
+			birthday.value = "1970-01-01";
 		}
 		
 		if (emailId.value == "") {
@@ -293,7 +293,7 @@
 				<fmt:formatDate var="year" value="<%=new java.util.Date() %>" pattern="yyyy" />
 				<fmt:parseNumber var="endYear" value="${year }" pattern="####"/>
 				<div>
-					<form:hidden path="birthday" value="0000/00/00"/>
+					<form:hidden path="birthday"/>
 					<input type="text" class="form-control" id="birthdayStr" placeholder="생년월일" disabled="disabled">
 					<select class="custom-select" id="year" onchange="set_birthday()">
 						<option selected="selected">연</option>
