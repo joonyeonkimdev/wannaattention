@@ -108,6 +108,10 @@
 			alert("나이를 입력하세요.");
 			age.focus();
 			return false;
+		} else if (!numOnlyRegex.test(age.value)) {
+			alert("나이는 숫자만 입력해 주세요.");
+			age.focus();
+			return false;
 		}
 		
 		if (!species.value) {
@@ -176,7 +180,7 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">이름</span>
 				</div>
-				<form:input path="name" class="form-control" />
+				<form:input path="name" class="form-control" placeholder="보호소 내 동물끼리 구분해 주세요." />
 				<small style="color: red;"><form:errors path="name" /></small>
 			</div>
 

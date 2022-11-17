@@ -33,7 +33,7 @@ public class AnimalService {
 		if (animal.getProfileFilename() != null && !animal.getProfileFilename().isEmpty()) {
 			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
 					+ animal.getProfileFilename();
-			String newFilePath = request.getServletContext().getRealPath("/") + "profileFile/" + "animal_" + animal.getShelterNum() + animal.getName() + "_profile"
+			String newFilePath = request.getServletContext().getRealPath("/") + "profileFile/" + "shelter" + animal.getShelterNum() + "_" + animal.getName() + "_profile"
 					 + animal.getProfileFilename().substring(animal.getProfileFilename().lastIndexOf("."));
 			File tempProfileFile = new File(tempFilePath);
 			File newProfileFile = new File(newFilePath);
@@ -43,7 +43,7 @@ public class AnimalService {
 				}
 				try {
 					Files.copy(tempProfileFile.toPath(), newProfileFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-					animal.setProfileFilename("animal_" + animal.getShelterNum() + animal.getName() + "_profile"
+					animal.setProfileFilename("shelter" + animal.getShelterNum() + "_" + animal.getName() + "_profile"
 								+ animal.getProfileFilename().substring(animal.getProfileFilename().lastIndexOf(".")));
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -54,8 +54,10 @@ public class AnimalService {
 			}
 		}
 		
-		// 
-
+		// 동물 등록
+		int maxAnimalNum = dao.selectMaxAnimalNum();
+		animal.setAnimalNum(maxAnimalNum+1);
+		dao.insertAnimal(animal);
 	}
 	
 	// 파일 업로드
