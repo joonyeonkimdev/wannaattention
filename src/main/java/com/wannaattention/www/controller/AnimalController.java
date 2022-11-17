@@ -1,7 +1,6 @@
 package com.wannaattention.www.controller;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -13,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wannaattention.www.service.AnimalService;
@@ -25,8 +23,8 @@ public class AnimalController {
 	@Autowired
 	private AnimalService service;
 	
-	@GetMapping("*")
-	public ModelAndView getAnimal() {
+	@GetMapping("animalRegister")
+	public ModelAndView animalRegister() {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject(new Animal());
 		return mav;
@@ -35,13 +33,14 @@ public class AnimalController {
 	@PostMapping("animalRegister")
 	public ModelAndView animalRegister(@Valid Animal animal, BindingResult bindingresult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		int animalNum;
 		if(bindingresult.hasErrors()) {
 			mav.getModel().putAll(bindingresult.getModel());
 			bindingresult.reject("error.input.animal");
 			return mav;
 		}
 		try {
-			service.insertAnimal(animal, request);
+		    animalNum = service.insertAnimal(animal, request);
 			mav.addObject("animal", animal);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -49,7 +48,7 @@ public class AnimalController {
 			mav.getModel().putAll(bindingresult.getModel());
 			return mav;
 		}
-		mav.setViewName("redirect:animalList");
+		mav.setViewName("redirect:animalDetail?animalNum=" + animalNum);
 		return mav;
 	}
 	
@@ -79,6 +78,29 @@ public class AnimalController {
 		mav.addObject("animalList", animalList);
 		return mav;
 	}
+	
+	@RequestMapping("animalDetail")
+	public ModelAndView animalDetail(Integer animalNum) {
+		ModelAndView mav = new ModelAndView();
+//		Animal animal = service.selectAnimal(animalNum);
+//		mav.addObject("animal", animal);
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }

@@ -29,7 +29,7 @@ public class AnimalService {
 		}
 	}
 
-	public void insertAnimal(Animal animal, HttpServletRequest request) {
+	public int insertAnimal(Animal animal, HttpServletRequest request) {
 		// 임시 파일 -> 프로필 파일 업로드
 		if (animal.getProfileFilename() != null && !animal.getProfileFilename().isEmpty()) {
 			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
@@ -59,6 +59,7 @@ public class AnimalService {
 		int maxAnimalNum = dao.selectMaxAnimalNum();
 		animal.setAnimalNum(maxAnimalNum+1);
 		dao.insertAnimal(animal);
+		return animal.getAnimalNum();
 	}
 	
 	// 파일 업로드

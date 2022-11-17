@@ -8,6 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <title>입양 동물 보기</title>
+<style type="text/css">
+	a {
+		text-decoration: none;
+	}
+</style>
 </head>
 <body>
 	<div class="container mt-5">
@@ -23,18 +28,15 @@
 				<button type="button" class="btn btn-outline-secondary" value="">기타</button>
 			</div>
 		</div>
-		<%-- 정렬 필터 --%>
-		<div class="row">
-			<div class="col-11 mt-5"></div>
-			<div class="btn-group col-1">
-				<button type="button" class="btn btn-info dropdown-toggle " data-toggle="dropdown">정렬</button>
-				<div class="dropdown-menu">
-					<a class="dropdown-item active" href="#">보호종료일 순</a>
-					<a class="dropdown-item" href="#">최신순</a>
-					<a class="dropdown-item" href="#">오래된순</a>
+		<%-- 글등록 버튼(보호소 유저만) --%>
+		<c:if test="${loginUser.userType == '1' }">
+			<div class="row">
+				<div class="col-lg-11"></div>
+				<div class="btn-group mt-5" role="group">
+					<button type="button" class="btn btn-outline-success" onclick="location.href='animalRegister'">글등록</button>
 				</div>
 			</div>
-		</div>
+		</c:if>
 		<div class="row mt-5">
 			<table class="table table-hover">
 				<thead>
@@ -47,18 +49,27 @@
 				</thead>
 				<tbody>
 					<c:forEach var="animal" items="${animalList }">
-						<tr style="cursor: pointer;" onclick="location.href='animalDetail?num'+${animal.animalNum};">
+						<tr style="cursor: pointer;" onclick="location.href='animalDetail?animalNum=' + ${animal.animalNum}">
 							<td>
 								<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
 							</td>
 							<td>
 								${animal.name }
+								<fmt:formatDate var="today" value="<%=new java.util.Date() %>" pattern="yyyyMMdd" />
+								<fmt:parseNumber var="todayAsNum" value="${today }" pattern="########"/>
+								<fmt:formatDate var="protectEndDate" value="${animal.protectEndDate }" pattern="yyyyMMdd" />
+								<fmt:parseNumber var="protectEndDateAsNum" value="${protectEndDate }" pattern="########"/>
+								<c:if test="${(protectEndDateAsNum - todayAsNum) <= 3}">
+									<img src="../../resources/images/emergency.png" width="25px" height="25px" title="3일 이내 보호 기간이 종료됩니다. 부디 입양하여 작은 생명을 살려주세요.">
+								</c:if>
 							</td>
 							<td>
 								<fmt:formatDate value="${animal.protectEndDate}" pattern="yyyy-MM-dd" />
 							</td>
 							<td>
-								${animal.shelterName}
+								<a href="location.href='shelterInfo?shelterNum=' + ${animal.shelterNum }" style="color: black;">
+									${animal.shelterName}
+								</a>
 							</td>
 						</tr>
 					</c:forEach>
