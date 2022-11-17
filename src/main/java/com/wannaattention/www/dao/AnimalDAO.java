@@ -38,4 +38,8 @@ public class AnimalDAO {
 		return template.getMapper(AnimalMapper.class).animalList(param);
 	}
 
+	public Animal selectAnimal(Integer animalNum) {
+		return template.getMapper(AnimalMapper.class).selectAnimal(animalNum);
+	}
+
 }

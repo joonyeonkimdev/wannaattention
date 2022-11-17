@@ -26,6 +26,10 @@ public interface AnimalMapper {
 			" FROM ANIMAL_TB A, USER_TB U WHERE A.SHELTER_NUM = U.USER_NUM ORDER BY PROTECT_END_DATE))" + 
 			" WHERE RNUM BETWEEN #{startRow} AND #{endRow}")
 	public List<Animal> animalList(Map<String, Object> param);
+
+	@Select("SELECT A.ANIMAL_NUM, A.SHELTER_NUM, U.NAME AS SHELTER_NAME, A.NAME, A.AGE, A.SPECIES, A.BREED, A.GENDER, A.NEUTRALIZATION, A.VACCINATION, A.ENTER_DATE, A.PROTECT_END_DATE, A.ADOPT_STEP, A.PROFILE_FILENAME"
+			+ " FROM ANIMAL_TB A, USER_TB U WHERE A.SHELTER_NUM = U.USER_NUM AND A.ANIMAL_NUM = #{animalNum}")
+	public Animal selectAnimal(Integer animalNum);
 	
 	
 

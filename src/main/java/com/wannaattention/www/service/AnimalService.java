@@ -83,6 +83,10 @@ public class AnimalService {
 	public List<Animal> animalList(Integer pageNum, int limit) {
 		return dao.animalList(pageNum, limit);
 	}
+
+	public Animal selectAnimal(Integer animalNum) {
+		return dao.selectAnimal(animalNum);
+	}
 	
 	
 	

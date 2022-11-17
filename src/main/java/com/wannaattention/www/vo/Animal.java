@@ -22,7 +22,7 @@ public class Animal {
 	@NotEmpty(message = "중성화 여부는 필수 입력사항입니다.")
 	private String neutralization;
 	@NotEmpty(message = "접종 여부는 필수 입력사항입니다.")
-	private String vacccination;
+	private String vaccination;
 	@NotNull(message = "보호소 입소일자는 필수 입력사항입니다.")
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date enterDate;
@@ -88,11 +88,11 @@ public class Animal {
 	public void setNeutralization(String neutralization) {
 		this.neutralization = neutralization;
 	}
-	public String getVacccination() {
-		return vacccination;
+	public String getVaccination() {
+		return vaccination;
 	}
-	public void setVacccination(String vacccination) {
-		this.vacccination = vacccination;
+	public void setVaccination(String vacccination) {
+		this.vaccination = vacccination;
 	}
 	public Date getEnterDate() {
 		return enterDate;
@@ -129,7 +129,7 @@ public class Animal {
 	public String toString() {
 		return "Animal [animalNum=" + animalNum + ", shelterNum=" + shelterNum + ", shelterName=" + shelterName
 				+ ", name=" + name + ", age=" + age + ", species=" + species + ", breed=" + breed + ", gender=" + gender
-				+ ", neutralization=" + neutralization + ", vacccination=" + vacccination + ", enterDate=" + enterDate
+				+ ", neutralization=" + neutralization + ", vacccination=" + vaccination + ", enterDate=" + enterDate
 				+ ", protectEndDate=" + protectEndDate + ", adoptStep=" + adoptStep + ", profileFilename="
 				+ profileFilename + ", profileFile=" + profileFile + "]";
 	}

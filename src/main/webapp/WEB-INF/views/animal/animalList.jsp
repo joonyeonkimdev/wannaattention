@@ -22,10 +22,10 @@
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="btn-group col-lg-4 mt-5" role="group" style="text-align:center;">
-				<button type="button" class="btn btn-outline-primary" value="">전체</button>
-				<button type="button" class="btn btn-outline-secondary" value="">강아지</button>
-				<button type="button" class="btn btn-outline-secondary" value="">고양이</button>
-				<button type="button" class="btn btn-outline-secondary" value="">기타</button>
+				<button type="button" id="button0" class="btn btn-outline-primary" onclick="">전체</button>
+				<button type="button" id="button1" class="btn btn-outline-secondary" onclick="">강아지</button>
+				<button type="button" id="button2" class="btn btn-outline-secondary" onclick="">고양이</button>
+				<button type="button" id="button3" class="btn btn-outline-secondary" onclick="">기타</button>
 			</div>
 		</div>
 		<%-- 글등록 버튼(보호소 유저만) --%>
@@ -49,7 +49,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="animal" items="${animalList }">
-						<tr style="cursor: pointer;" onclick="location.href='animalDetail?animalNum=' + ${animal.animalNum}">
+						<tr style="cursor: pointer;" onclick="location.href='animalDetail?animalNum=${animal.animalNum}'">
 							<td>
 								<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
 							</td>
@@ -67,7 +67,7 @@
 								<fmt:formatDate value="${animal.protectEndDate}" pattern="yyyy-MM-dd" />
 							</td>
 							<td>
-								<a href="location.href='shelterInfo?shelterNum=' + ${animal.shelterNum }" style="color: black;">
+								<a href="shelterInfo?shelterNum=${animal.shelterNum }">
 									${animal.shelterName}
 								</a>
 							</td>

@@ -53,7 +53,7 @@ public class AnimalController {
 	}
 	
 	@RequestMapping("animalList")
-	public ModelAndView animalList(Integer pageNum, HttpSession session) {
+	public ModelAndView animalList(Integer pageNum, HttpSession session, String species) {
 		ModelAndView mav = new ModelAndView();
 		if(pageNum == null || pageNum.toString().equals("")) {
 			   pageNum = 1;
@@ -82,9 +82,9 @@ public class AnimalController {
 	@RequestMapping("animalDetail")
 	public ModelAndView animalDetail(Integer animalNum) {
 		ModelAndView mav = new ModelAndView();
-//		Animal animal = service.selectAnimal(animalNum);
-//		mav.addObject("animal", animal);
-		return null;
+		Animal animal = service.selectAnimal(animalNum);
+		mav.addObject("animal", animal);
+		return mav;
 	}
 	
 	
