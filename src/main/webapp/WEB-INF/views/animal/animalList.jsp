@@ -5,81 +5,130 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입양동물 목록보기</title>
-
+<title>입양 동물 보기</title>
 </head>
-
 <body>
-<!-- 동물 종류 버튼  -->
-<div align="center">
-<button type="button" class="btn btn-outline-primary">전체</button>
-<button type="button" class="btn btn-outline-secondary">강아지</button>
-<button type="button" class="btn btn-outline-secondary">고양이</button>
-<button type="button" class="btn btn-outline-secondary">기타</button>
-</div>
-<!-- 필터 -->
-<div align="right">
-  <button type="button" class="btn btn-primary">정렬순</button>
-  <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" 
-  		  data-toggle="dropdown" 
-  		  aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-</button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">최신순</a>
-    <a class="dropdown-item" href="#">오래된순</a>
-    <a class="dropdown-item" href="#">거리순</a>
-</div>
-</div>
-<!--목록-->
-<ul class="list-unstyled">
-  <li class="media">
-    <img src="..." class="mr-3" alt="...">
-    <divclass="media-body">
-      <h5 class="mt-0 mb-1">강아지 예시</h5>
-      <p>등록번호:
-      <br>이름:<br>나이:<br>성별:</p>
-   <a href="#" class="card-link">자세히보기</a>
-    </div>
-  </li>
-  <li class="media my-4">
-    <img src="..." class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">고양이 예시</h5>
-      <p>등록번호:
-      <br>이름:<br>나이:<br>성별:</p>
-     <a href="#" class="card-link">자세히보기</a>
-    </div>
-  </li>
-  <li class="media">
-    <img src="..." class="mr-3" alt="...">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1">고슴도치 예시</h5>
-      <p>등록번호:
-      <br>이름:<br>나이:<br>성별:</p>
-    <a href="#" class="card-link">자세히보기</a>
-    </div>
-  </li>
-</ul>
-  </div>
-</div>
-<!--하단 페이지 넘기기 창  -->
-<nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
-</div>
-</div>
-</table>
-
+	<div class="container mt-5">
+		<h2>입양 동물 보기</h2>
+		<hr>
+		<%-- 동물 종 필터  --%>
+		<div class="row">
+			<div class="col-lg-4"></div>
+			<div class="btn-group col-lg-4 mt-5" role="group" style="text-align:center;">
+				<button type="button" class="btn btn-outline-primary" value="">전체</button>
+				<button type="button" class="btn btn-outline-secondary" value="">강아지</button>
+				<button type="button" class="btn btn-outline-secondary" value="">고양이</button>
+				<button type="button" class="btn btn-outline-secondary" value="">기타</button>
+			</div>
+		</div>
+		<%-- 정렬 필터 --%>
+		<div class="row">
+			<div class="col-11 mt-5"></div>
+			<div class="btn-group col-1">
+				<button type="button" class="btn btn-info dropdown-toggle " data-toggle="dropdown">정렬</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item active" href="#">보호종료일 순</a>
+					<a class="dropdown-item" href="#">최신순</a>
+					<a class="dropdown-item" href="#">오래된순</a>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">번호</th>
+						<th scope="col">사진</th>
+						<th scope="col">이름</th>
+						<th scope="col">보호 종료 일자</th>
+						<th scope="col">보호소</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr onclick="location.href='animalDetail';">
+						<th scope="row">rownum</th>
+						<td>
+							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
+						</td>
+						<td>
+							${animal.name }이름
+						</td>
+						<td>
+							${animal.protectEndDate}보호 종료 일자
+						</td>
+						<td>
+							${shelter.name}보호소 이름
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">rownum</th>
+						<td>
+							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
+						</td>
+						<td>
+							${animal.name }이름
+						</td>
+						<td>
+							${animal.protectEndDate}보호 종료 일자
+						</td>
+						<td>
+							${shelter.name}보호소 이름
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">rownum</th>
+						<td>
+							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
+						</td>
+						<td>
+							${animal.name }이름
+						</td>
+						<td>
+							${animal.protectEndDate}보호 종료 일자
+						</td>
+						<td>
+							${shelter.name}보호소 이름
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">rownum</th>
+						<td>
+							<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
+						</td>
+						<td>
+							${animal.name }이름
+						</td>
+						<td>
+							${animal.protectEndDate}보호 종료 일자
+						</td>
+						<td>
+							${shelter.name}보호소 이름
+						</td>
+					</tr>
+				</tbody>
+				<thead>
+					<tr>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+						<th scope="col"></th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+		<%-- 페이징  --%>
+		<div class="row justify-content-center mt-5">
+			<nav>
+				<ul class="pagination">
+					<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">Next</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
 </body>
 </html>
