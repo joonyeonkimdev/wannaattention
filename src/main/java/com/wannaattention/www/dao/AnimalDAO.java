@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.User;
 
 @Repository
 public class AnimalDAO {
@@ -40,6 +41,10 @@ public class AnimalDAO {
 
 	public Animal selectAnimal(Integer animalNum) {
 		return template.getMapper(AnimalMapper.class).selectAnimal(animalNum);
+	}
+
+	public User selectShelter(String shelterNum) {
+		return template.getMapper(AnimalMapper.class).selectShelter(shelterNum);
 	}
 
 }

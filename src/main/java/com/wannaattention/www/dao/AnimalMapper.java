@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.User;
 
 public interface AnimalMapper {
 
@@ -30,6 +31,9 @@ public interface AnimalMapper {
 	@Select("SELECT A.ANIMAL_NUM, A.SHELTER_NUM, U.NAME AS SHELTER_NAME, A.NAME, A.AGE, A.SPECIES, A.BREED, A.GENDER, A.NEUTRALIZATION, A.VACCINATION, A.ENTER_DATE, A.PROTECT_END_DATE, A.ADOPT_STEP, A.PROFILE_FILENAME"
 			+ " FROM ANIMAL_TB A, USER_TB U WHERE A.SHELTER_NUM = U.USER_NUM AND A.ANIMAL_NUM = #{animalNum}")
 	public Animal selectAnimal(Integer animalNum);
+
+	@Select("SELECT * FROM USER_TB WHERE USER_NUM = #{shelterNum}")
+	public User selectShelter(String shelterNum);
 	
 	
 

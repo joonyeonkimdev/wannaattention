@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.wannaattention.www.dao.AnimalDAO;
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.User;
 
 @Service
 public class AnimalService {
@@ -86,6 +87,10 @@ public class AnimalService {
 
 	public Animal selectAnimal(Integer animalNum) {
 		return dao.selectAnimal(animalNum);
+	}
+
+	public User selectShelter(String shelterNum) {
+		return dao.selectShelter(shelterNum);
 	}
 	
 	

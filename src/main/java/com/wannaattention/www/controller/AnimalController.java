@@ -88,13 +88,13 @@ public class AnimalController {
 		return mav;
 	}
 	
-//	@RequestMapping("shelterInfo")
-//	public ModelAndView shelterInfo(String ) {
-//		ModelAndView mav = new ModelAndView();
-//		User user = service.selectShelter();
-//		
-//		return mav;
-//	}
+	@RequestMapping("shelterInfo")
+	public ModelAndView shelterInfo(String shelterNum) {
+		ModelAndView mav = new ModelAndView();
+		User shelter = service.selectShelter(shelterNum);
+		mav.addObject("shelter", shelter);
+		return mav;
+	}
 	
 	
 	
