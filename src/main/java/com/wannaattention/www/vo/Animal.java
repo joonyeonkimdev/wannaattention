@@ -91,8 +91,8 @@ public class Animal {
 	public String getVaccination() {
 		return vaccination;
 	}
-	public void setVaccination(String vacccination) {
-		this.vaccination = vacccination;
+	public void setVaccination(String vaccination) {
+		this.vaccination = vaccination;
 	}
 	public Date getEnterDate() {
 		return enterDate;

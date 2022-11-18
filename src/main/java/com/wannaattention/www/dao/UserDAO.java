@@ -11,7 +11,6 @@ import com.wannaattention.www.vo.User;
 
 @Repository
 public class UserDAO {
-	
 	@Autowired
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();

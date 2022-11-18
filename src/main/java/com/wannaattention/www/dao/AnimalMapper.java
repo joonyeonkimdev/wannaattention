@@ -16,7 +16,7 @@ public interface AnimalMapper {
 	public int selectMaxAnimalNum();
 
 	@Insert("INSERT INTO ANIMAL_TB (ANIMAL_NUM, SHELTER_NUM, NAME, AGE, SPECIES, BREED, GENDER, NEUTRALIZATION, VACCINATION, ENTER_DATE, PROTECT_END_DATE, ADOPT_STEP, PROFILE_FILENAME)"
-			+ " VALUES (#{animalNum}, #{shelterNum}, #{name}, #{age}, #{species}, #{breed}, #{gender}, #{neutralization}, #{vacccination}, #{enterDate}, #{protectEndDate}, #{adoptStep}, #{profileFilename})")
+			+ " VALUES (#{animalNum}, #{shelterNum}, #{name}, #{age}, #{species}, #{breed}, #{gender}, #{neutralization}, #{vaccination}, #{enterDate}, #{protectEndDate}, #{adoptStep}, #{profileFilename})")
 	public void insertAnimal(Animal animal);
 
 	@Select("SELECT COUNT(*) FROM ANIMAL_TB")
