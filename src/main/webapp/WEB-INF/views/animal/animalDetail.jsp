@@ -120,7 +120,7 @@
 		<h3 class="mt-4">[ 입양으로 ${animal.name }를(을) 구해주세요. ]</h3>
 		<c:if test="${loginUser.userNum != animal.shelterNum }">
 			<div>
-				<button type="button" class="btn btn-success mt-3" onclick="">입양하기</button>
+				<button type="button" class="btn btn-success mt-3" onclick="location.href='booking?animalNum=${animal.animalNum}'">입양하기</button>
 			</div>
 		</c:if>
 	</div>

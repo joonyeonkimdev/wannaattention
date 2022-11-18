@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.Booking;
 import com.wannaattention.www.vo.User;
 
 public interface AnimalMapper {
@@ -34,7 +35,27 @@ public interface AnimalMapper {
 
 	@Select("SELECT * FROM USER_TB WHERE USER_NUM = #{shelterNum}")
 	public User selectShelter(String shelterNum);
+
+	@Select("SELECT NVL(MAX(BOOKING_NUM), 0) FROM BOOKING_TB")
+	public int selectMaxBookingNum();
+	
+	@Insert("INSERT INTO BOOKING_TB (BOOKING_NUM, BOOKER_NUM, SHELTER_NUM, ANIMAL_NUM, BOOKING_DATE) VALUES (#{bookingNum}, #{bookerNum}, #{shelterNum}, #{animalNum}, #{bookingDate})")
+	public void insertBooking(Booking booking);
+	
 	
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

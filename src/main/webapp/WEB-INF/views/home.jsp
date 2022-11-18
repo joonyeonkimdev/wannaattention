@@ -20,7 +20,7 @@
 	</div>
 	<div class="card-deck">
 		<div class="card" style=" cursor: pointer;" onclick="location.href='/animal/animalList';">
-			<img src="resources/images/home_card_pic01.jpg" class="card-img-top">
+			<img src="/resources/images/home_card_pic01.jpg" class="card-img-top">
 			<div class="card-body">
 				<h5 class="card-title"><strong>입양하기</strong></h5>
 				<p class="card-text">
@@ -32,7 +32,7 @@
 			</div>
 		</div>
 		<div class="card" style="cursor: pointer;" onclick="location.href='/board/missingAnimalList';">
-			<img src="resources/images/home_card_pic02.jpg" class="card-img-top">
+			<img src="/resources/images/home_card_pic02.jpg" class="card-img-top">
 			<div class="card-body">
 				<h5 class="card-title"><strong>실종동물 찾기</strong></h5>
 				<p class="card-text">
@@ -44,7 +44,7 @@
 			</div>
 		</div>
 		<div class="card" style="cursor: pointer;" onclick="location.href='/touchOfAid/donate';">
-			<img src="resources/images/home_card_pic03.png" class="card-img-top">
+			<img src="/resources/images/home_card_pic03.png" class="card-img-top">
 			<div class="card-body">
 				<h5 class="card-title"><strong>도움의 손길</strong></h5>
 				<p class="card-text">

@@ -33,7 +33,7 @@
 			<div class="row">
 				<div class="col-lg-11"></div>
 				<div class="btn-group mt-5" role="group">
-					<button type="button" class="btn btn-outline-success" onclick="location.href='animalRegister'">글등록</button>
+					<button type="button" class="btn btn-outline-success" onclick="location.href='animalRegister'">동물등록</button>
 				</div>
 			</div>
 		</c:if>

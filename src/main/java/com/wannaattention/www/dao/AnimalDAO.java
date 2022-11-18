@@ -1,5 +1,6 @@
 package com.wannaattention.www.dao;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.Booking;
 import com.wannaattention.www.vo.User;
 
 @Repository
@@ -46,5 +48,37 @@ public class AnimalDAO {
 	public User selectShelter(String shelterNum) {
 		return template.getMapper(AnimalMapper.class).selectShelter(shelterNum);
 	}
+	
+	public int selectMaxBookingNum() {
+		return template.getMapper(AnimalMapper.class).selectMaxBookingNum();
+	}
 
+	public void insertBooking(Booking booking) {
+		template.getMapper(AnimalMapper.class).insertBooking(booking);	
+	}
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

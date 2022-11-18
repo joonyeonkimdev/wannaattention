@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.wannaattention.www.dao.AnimalDAO;
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.Booking;
 import com.wannaattention.www.vo.User;
 
 @Service
@@ -92,6 +94,13 @@ public class AnimalService {
 	public User selectShelter(String shelterNum) {
 		return dao.selectShelter(shelterNum);
 	}
+
+	public void insertBooking(Booking booking) {
+		int maxBookingNum = dao.selectMaxBookingNum();
+		booking.setBookingNum(maxBookingNum+1);
+		dao.insertBooking(booking);
+	}
+
 	
 	
 	

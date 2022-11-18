@@ -37,14 +37,20 @@
 	<!-- 로그인 인터셉터 정의 -->
 	<beans:bean id="InterceptorForLogin" class="com.wannaattention.www.util.InterceptorForLogin"/>
 	<beans:bean id="InterceptorForShelter" class="com.wannaattention.www.util.InterceptorForShelter"/>
+	<beans:bean id="InterceptorForAdopter" class="com.wannaattention.www.util.InterceptorForAdopter"/>
 	<interceptors>
 		<interceptor>
 			<mapping path="/animal/animalRegister"/>
+			<mapping path="/animal/booking"/>
 			<beans:ref bean="InterceptorForLogin"/>
 		</interceptor>
 		<interceptor>
 			<mapping path="/animal/animalRegister"/>
 			<beans:ref bean="InterceptorForShelter"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/animal/booking"/>
+			<beans:ref bean="InterceptorForAdopter"/>
 		</interceptor>
 	</interceptors>
 	

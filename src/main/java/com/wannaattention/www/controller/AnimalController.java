@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wannaattention.www.service.AnimalService;
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.Booking;
 import com.wannaattention.www.vo.User;
 
 @Controller
@@ -94,6 +95,48 @@ public class AnimalController {
 		User shelter = service.selectShelter(shelterNum);
 		mav.addObject("shelter", shelter);
 		return mav;
+	}
+	
+	@GetMapping("booking")
+	public ModelAndView booking(Integer animalNum) {
+		ModelAndView mav = new ModelAndView();
+		Animal animal = service.selectAnimal(animalNum);
+		mav.addObject("animal", animal);
+		mav.addObject(new Booking());
+		return mav;
+	}
+	
+	@PostMapping("booking")
+	public ModelAndView booking(@Valid Booking booking, BindingResult bindingresult, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.input.booking");
+			return mav;
+		}
+		try {
+		    service.insertBooking(booking);
+			mav.addObject("booking", booking);
+		} catch(Exception e) {
+			e.printStackTrace();
+			bindingresult.reject("error.booking.adopt");
+			mav.getModel().putAll(bindingresult.getModel());
+			return mav;
+		}
+		HttpSession session = request.getSession();
+		session.setAttribute("booking", booking);
+		mav.setViewName("redirect:bookingConfirm");
+		return mav;
+	}
+	
+	@GetMapping("bookingConfirm")
+	public String bookingConfirm(HttpSession session) {
+		if (session.getAttribute("booking") == null) {
+			return "/home";
+		} else {
+			session.removeAttribute("booking");
+			return null;
+		}
 	}
 	
 	
