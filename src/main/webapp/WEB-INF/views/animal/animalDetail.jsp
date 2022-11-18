@@ -12,9 +12,16 @@
 	<div class="container mt-5">
 		<h2>입양 동물 상세보기</h2> 
 		<hr>
+		<c:if test="${loginUser.userNum == animal.shelterNum }">
+			<div class="row mb-5">
+				<div class="col-lg-11"></div>
+				<div class="btn-group " role="group">
+					<button type="button" class="btn btn-outline-success" onclick="location.href='animalUpdate'">수정</button>
+				</div>
+			</div>
+		</c:if>
 		<div class="mt-5" style="text-align: center;">
-			<img src="/profileFile/${animal.profileFilename }" width="500"
-				height="500">
+			<img src="/profileFile/${animal.profileFilename }" width="500" height="500">
 		</div>
 		<div class="row mt-5" style="text-align: center;">
 			<table class="table table-striped">
@@ -111,10 +118,11 @@
 			</table>
 		</div>
 		<h3 class="mt-4">[ 입양으로 ${animal.name }를(을) 구해주세요. ]</h3>
-		<div>
-			<button type="button" class="btn btn-success mt-3" onclick="">입양하기</button>
-		</div>
-
+		<c:if test="${loginUser.userNum != animal.shelterNum }">
+			<div>
+				<button type="button" class="btn btn-success mt-3" onclick="">입양하기</button>
+			</div>
+		</c:if>
 	</div>
 </body>
 </html>

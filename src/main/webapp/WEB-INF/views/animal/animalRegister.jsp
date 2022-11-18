@@ -77,11 +77,11 @@
 		neutralization.value = neutralizationSelect.value;
 	}
 	// 접종 hidden값 세팅
-	function set_vacccination() {
-		let vacccinationSelect  = document.getElementById("vacccinationSelect");
-		let vacccination = document.getElementById("vacccination");
+	function set_vaccination() {
+		let vaccinationSelect  = document.getElementById("vaccinationSelect");
+		let vaccination = document.getElementById("vaccination");
 		
-		vacccination.value = vacccinationSelect.value;
+		vaccination.value = vaccinationSelect.value;
 	}
 	
 	// 폼 유효성검사
@@ -92,7 +92,7 @@
 		let breed = document.getElementById("breed");
 		let gender = document.getElementById("gender");
 		let neutralization = document.getElementById("neutralization");
-		let vacccination = document.getElementById("vacccination");
+		let vaccination = document.getElementById("vaccination");
 		let enterDate = document.getElementById("enterDate");
 		let protectEndDate = document.getElementById("protectEndDate");
 		
@@ -132,9 +132,9 @@
 			return false;
 		}
 		
-		if (!vacccination.value) {
+		if (!vaccination.value) {
 			alert("접종 여부를 입력하세요.");
-			vacccination.focus();
+			vaccination.focus();
 			return false;
 		}
 		
@@ -239,13 +239,13 @@
 				<div class="input-group-prepend">
 					<span class="input-group-text">접종 여부</span>
 				</div>
-				<form:hidden path="vacccination"/>
-				<select class="custom-select" id="vacccinationSelect" onchange="set_vacccination()">
+				<form:hidden path="vaccination"/>
+				<select class="custom-select" id="vaccinationSelect" onchange="set_vaccination()">
 					<option selected="selected"></option>
 					<option value="1">접종</option>
 					<option value="0">미접종</option>
 				</select>
-				<small style="color: red;"><form:errors path="vacccination" /></small>
+				<small style="color: red;"><form:errors path="vaccination" /></small>
 			</div>
 			<div class="form-group col-lg-4 mt-3">
 				<div class="input-group-prepend">

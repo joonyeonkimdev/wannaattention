@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>입양동물 게시글 수정</title>
+<title>입양 동물 수정</title>
 </head>
 <body>
 

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wannaattention.www.service.AnimalService;
 import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.vo.User;
 
 @Controller
 @RequestMapping("animal")
@@ -87,6 +88,13 @@ public class AnimalController {
 		return mav;
 	}
 	
+//	@RequestMapping("shelterInfo")
+//	public ModelAndView shelterInfo(String ) {
+//		ModelAndView mav = new ModelAndView();
+//		User user = service.selectShelter();
+//		
+//		return mav;
+//	}
 	
 	
 	
