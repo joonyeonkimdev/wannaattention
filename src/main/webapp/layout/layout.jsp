@@ -79,8 +79,16 @@
 						<a href="${path}/user/join">회원가입</a>
 					</c:if> 
 					<c:if test="${!empty sessionScope.loginUser}">
-						&nbsp;&nbsp;
-						<img src="../resources/images/profile_default_pic.png" width="30" height="30" class="d-inline-block align-top" alt="">
+						<c:choose>
+							<c:when test="${loginUser.profileFilename != null }">
+								&nbsp;&nbsp;
+								<img src="/profileFile/${loginUser.profileFilename }" class="d-inline-block align-top" style="width: 30px; height: 30px; border-radius: 50%;">
+							</c:when>
+							<c:otherwise>
+								&nbsp;&nbsp;
+								<img src="/resources/images/profile_default_pic.png" class="d-inline-block align-top" style="width: 30px; height: 30px; border-radius: 50%;">
+							</c:otherwise>
+						</c:choose>
 						<br>
 						<a href="${path}/user/logout">로그아웃</a>
 					</c:if>

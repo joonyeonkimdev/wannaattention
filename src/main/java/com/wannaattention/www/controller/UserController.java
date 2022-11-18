@@ -61,9 +61,19 @@ public class UserController {
 			mav.getModel().putAll(bindingresult.getModel());
 			return mav;
 		}
-		mav.setViewName("redirect:welcome");
 		request.getSession().setAttribute("userNickname", user.getNickname());
+		mav.setViewName("redirect:welcome");
 		return mav;
+	}
+	
+	@RequestMapping("welcome")
+	public String welcome(HttpSession session) {
+		if (session.getAttribute("userNickname") == null) {
+			return "/home";
+		} else {
+			session.removeAttribute("userNickname");
+			return null;
+		}
 	}
 	
 	@PostMapping("login")

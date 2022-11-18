@@ -8,10 +8,7 @@
 </head>
 <body>
 	<div class="mt-5">
-		<h1>
-			${sessionScope.userNickname }님,<br>
-			 회원가입을 환영합니다.
-		 </h1>
+		 <h1>회원가입을 환영합니다.</h1>
 		 <br>
 		 <p>당신의 작은 관심이 수 많은 생명을 살릴 수 있습니다.</p>
 	</div>
