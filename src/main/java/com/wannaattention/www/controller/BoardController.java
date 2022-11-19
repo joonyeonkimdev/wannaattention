@@ -21,8 +21,8 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@GetMapping("write")
-	public ModelAndView write(HttpSession session) {
+	@GetMapping("boardWrite")
+	public ModelAndView boardWrite(HttpSession session) {
 		ModelAndView mav = new ModelAndView();
 		String boardType = (String)session.getAttribute("boardType");
 		if (boardType == null) {
@@ -37,13 +37,13 @@ public class BoardController {
 		case "5" : boardName = "입양 후기"; break; 
 		}
 		mav.addObject(new Board());
+		session.setAttribute("boardName", boardName);
 		mav.addObject("boardType", boardType);
-		mav.addObject("boardName",boardName);
 		return mav;
 	}
 	
-	@PostMapping("write")
-	public ModelAndView write(@Valid Board board, BindingResult bindingresult, HttpServletRequest request) {
+	@PostMapping("boardWrite")
+	public ModelAndView boardWrite(@Valid Board board, BindingResult bindingresult, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
 		if(bindingresult.hasErrors()) { 
 			mav.getModel().putAll(bindingresult.getModel());
@@ -65,9 +65,25 @@ public class BoardController {
 	}
 	
 	@RequestMapping("boardDetail")
-	public ModelAndView boardDetail() {
+	public ModelAndView boardDetail(Integer boardNum, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
-		return null;
+		String boardType = (String)session.getAttribute("boardType");
+		if (boardType == null) {
+			boardType = "4";
+		}
+		String boardName = null;
+		switch(boardType) {
+		case "1" : boardName = "공지사항"; break;
+		case "2" : boardName = "후원금 사용내역"; break;
+		case "3" : boardName = "QnA"; break;
+		case "4" : boardName = "자유게시판"; break;
+		case "5" : boardName = "입양 후기"; break; 
+		}
+		mav.addObject(new Board());
+		session.setAttribute("boardName", boardName);
+		Board board = service.selectBoardByBN(boardNum);
+		mav.addObject("board", board);
+		return mav;
 	}
 	
 	

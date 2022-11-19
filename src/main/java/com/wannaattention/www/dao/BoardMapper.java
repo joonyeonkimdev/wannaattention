@@ -14,6 +14,11 @@ public interface BoardMapper {
 			+ " VALUES (#{boardNum}, #{writerNum}, #{boardType}, #{title}, SYSDATE, #{readCnt}, #{content}, #{grp}, #{grpLevel}, #{grpStep}, #{photoFilename}, #{videoFilename}, #{etcFilename})")
 	public int insertBoard(Board board);
 
+	@Select("SELECT B.BOARD_NUM, U.USER_NUM AS WRITER_NUM, U.ID AS WRITER_ID, U.NICKNAME AS WRITER_NICKNAME, B.BOARD_TYPE, B.TITLE, B.REG_DATE, B.READ_CNT, B.CONTENT, B.GRP, B.GRP_LEVEL, B.GRP_STEP, B.PHOTO_FILENAME, B.VIDEO_FILENAME, B.ETC_FILENAME"
+			+ " FROM BOARD_TB B, USER_TB U"
+			+ " WHERE B.WRITER_NUM = U.USER_NUM AND B.BOARD_NUM = #{boardNum}")
+	public Board selectBoardByBN(Integer boardNum);
+
 	
 
 }

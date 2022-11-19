@@ -55,6 +55,10 @@ public class BoardService {
 		}
 	}
 
+	public Board selectBoardByBN(Integer boardNum) {
+		return dao.selectBoardByBN(boardNum);
+	}
+
 	
 	
 }

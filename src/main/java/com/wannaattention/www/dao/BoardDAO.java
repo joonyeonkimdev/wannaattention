@@ -25,5 +25,9 @@ public class BoardDAO {
 		return template.getMapper(BoardMapper.class).insertBoard(board);
 	}
 
+	public Board selectBoardByBN(Integer boardNum) {
+		return template.getMapper(BoardMapper.class).selectBoardByBN(boardNum);
+	}
+
 	
 }
