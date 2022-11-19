@@ -65,11 +65,11 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">커뮤니티</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${path}/community/noticeList">공지사항</a>
-							<a class="dropdown-item" href="${path}/community/usageStatList">후원금 사용내역</a>
-							<a class="dropdown-item" href="${path}/community/qnaList">QNA</a>
-							<a class="dropdown-item" href="${path}/community/freeList">자유게시판</a>
-							<a class="dropdown-item" href="${path}/community/epilogueList">입양 후기</a>
+							<a class="dropdown-item" href="${path}/community/boardList?boardType=1">공지사항</a>
+							<a class="dropdown-item" href="${path}/community/boardList?boardType=2">후원금 사용내역</a>
+							<a class="dropdown-item" href="${path}/community/boardList?boardType=3">QNA</a>
+							<a class="dropdown-item" href="${path}/community/boardList?boardType=4">자유게시판</a>
+							<a class="dropdown-item" href="${path}/community/boardList?boardType=5">입양 후기</a>
 						</div>
 					</li>
 				</ul>

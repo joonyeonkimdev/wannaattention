@@ -30,6 +30,12 @@
 					</div>
 					<div class="form-group mt-3">
 						<div class="input-group-prepend">
+							<span class="input-group-text">조회수</span>
+						</div>
+						<input type="text" class="form-control" id="title" value="${board.readCnt}" disabled="disabled">
+					</div>
+					<div class="form-group mt-3">
+						<div class="input-group-prepend">
 							<span class="input-group-text">내용</span>
 						</div>
 						<textarea class="form-control" id="content" disabled="disabled" rows="10">${board.content}</textarea>
@@ -53,19 +59,19 @@
 		<div>
 			<c:choose>
 				<c:when test="${loginUser.id == 'admin' }">
-					<button type="button" class="btn btn-success mt-3" onclick="location.href='boardReply'">답글</button>
+					<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardReply'">답글</button>
 					<c:if test="${loginUser.userNum == board.writerNum }">
-						<button type="button" class="btn btn-success mt-3" onclick="location.href='boardUpdate'">수정</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate'">수정</button>
 					</c:if>
-					<button type="button" class="btn btn-success mt-3" onclick="location.href='boardDelete'">삭제</button>
+					<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardDelete'">삭제</button>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${board.writerNum != loginUser.userNum && (board.boardType == '4' || board.boardType == '5')}">
-						<button type="button" class="btn btn-success mt-3" onclick="location.href='boardReply'">답글</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardReply'">답글</button>
 					</c:if>
 					<c:if test="${board.writerNum == loginUser.userNum }">
-						<button type="button" class="btn btn-success mt-3" onclick="location.href='boardUpdate'">수정</button>
-						<button type="button" class="btn btn-success mt-3" onclick="location.href='boardDelete'">삭제</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate'">수정</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardDelete'">삭제</button>
 					</c:if>
 				</c:otherwise>
 			</c:choose>

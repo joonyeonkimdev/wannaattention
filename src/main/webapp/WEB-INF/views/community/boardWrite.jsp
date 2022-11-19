@@ -38,7 +38,7 @@
 		<h5>[ ${boardName } ]</h5>
 		<h2>게시글 등록</h2>
 		<hr>
-	<form:form modelAttribute="board" action="write" enctype="multipart/form-data" name="f" onsubmit="return onSubmit();">
+	<form:form modelAttribute="board" action="boardWrite" enctype="multipart/form-data" name="f" onsubmit="return onSubmit();">
 		<spring:hasBindErrors name="board">
 			<font color="red">
             	<c:forEach items="${errors.globalErrors }" var="error">

@@ -1,6 +1,7 @@
 package com.wannaattention.www.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,21 @@ public class BoardDAO {
 
 	public Board selectBoardByBN(Integer boardNum) {
 		return template.getMapper(BoardMapper.class).selectBoardByBN(boardNum);
+	}
+
+	public int boardCount(String boardType) {
+		return template.getMapper(BoardMapper.class).boardCount(boardType);
+		
+	}
+
+	public List<Board> boardList(Integer pageNum, int limit, String boardType) {
+		param.clear();
+		int startRow = (pageNum - 1) * limit + 1; 
+		int endRow = startRow + limit - 1;
+		param.put("startRow", startRow);
+		param.put("endRow", endRow);
+		param.put("boardType", boardType);
+		return template.getMapper(BoardMapper.class).boardList(param);
 	}
 
 	

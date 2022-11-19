@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -57,6 +58,14 @@ public class BoardService {
 
 	public Board selectBoardByBN(Integer boardNum) {
 		return dao.selectBoardByBN(boardNum);
+	}
+
+	public int boardCount(String boardType) {
+		return dao.boardCount(boardType);
+	}
+
+	public List<Board> boardList(Integer pageNum, int limit, String boardType) {
+		return dao.boardList(pageNum, limit, boardType);
 	}
 
 	
