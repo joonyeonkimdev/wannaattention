@@ -2,12 +2,19 @@ package com.wannaattention.www.vo;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class Board {
 	private int boardNum;
 	private int writerNum;
+	private String writerId;
+	private String writerNickname;
+	@NotEmpty(message = "게시판 종류를 선택해 주세요.")
 	private String boardType;
+	@NotEmpty(message = "제목은 필수 입력사항입니다.")
 	private String title;
 	private Date regDate;
 	private int readCnt;
@@ -33,6 +40,18 @@ public class Board {
 	}
 	public void setWriterNum(int writerNum) {
 		this.writerNum = writerNum;
+	}
+	public String getWriterId() {
+		return writerId;
+	}
+	public void setWriterId(String writerId) {
+		this.writerId = writerId;
+	}
+	public String getWriterNickname() {
+		return writerNickname;
+	}
+	public void setWriterNickname(String writerNickname) {
+		this.writerNickname = writerNickname;
 	}
 	public String getBoardType() {
 		return boardType;
@@ -121,12 +140,15 @@ public class Board {
 	
 	@Override
 	public String toString() {
-		return "Board [boardNum=" + boardNum + ", writerNum=" + writerNum + ", boardType=" + boardType + ", title="
-				+ title + ", regDate=" + regDate + ", readCnt=" + readCnt + ", content=" + content + ", grp=" + grp
-				+ ", grpLevel=" + grpLevel + ", grpStep=" + grpStep + ", photoFilename=" + photoFilename
-				+ ", videoFilename=" + videoFilename + ", etcFilename=" + etcFilename + ", photoFile=" + photoFile
-				+ ", videoFile=" + videoFile + ", etcFile=" + etcFile + "]";
+		return "Board [boardNum=" + boardNum + ", writerNum=" + writerNum + ", writerId=" + writerId
+				+ ", writerNickname=" + writerNickname + ", boardType=" + boardType + ", title=" + title + ", regDate="
+				+ regDate + ", readCnt=" + readCnt + ", content=" + content + ", grp=" + grp + ", grpLevel=" + grpLevel
+				+ ", grpStep=" + grpStep + ", photoFilename=" + photoFilename + ", videoFilename=" + videoFilename
+				+ ", etcFilename=" + etcFilename + ", photoFile=" + photoFile + ", videoFile=" + videoFile
+				+ ", etcFile=" + etcFile + "]";
 	}
+	
+	
 	
 	
 }

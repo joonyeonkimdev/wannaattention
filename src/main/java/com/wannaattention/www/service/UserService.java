@@ -51,10 +51,10 @@ public class UserService {
 		// 사업자 등록증 업로드
 		if(user.getShelterDesFile() != null && !user.getShelterDesFile().isEmpty()) {
 			String shelterDocUploadPath = request.getServletContext().getRealPath("/") + "shelterDocsFile/";
-			uploadFileCreat(user.getShelterDesFile(), shelterDocUploadPath);
+			uploadFileCreate(user.getShelterDesFile(), shelterDocUploadPath);
 			user.setShelterDesFilename(user.getShelterDesFile().getOriginalFilename());
 			File currentDocFile = new File(shelterDocUploadPath + user.getShelterDesFilename());
-			File newDocFile = new File(shelterDocUploadPath + user.getId() + "_shelterDoc");
+			File newDocFile = new File(shelterDocUploadPath + user.getId() + "_shelterDoc" + user.getShelterDesFilename().substring(user.getShelterDesFilename().lastIndexOf(".")));
 			try {
 				Files.copy(currentDocFile.toPath(), newDocFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 			} catch (IOException e) {
@@ -75,7 +75,7 @@ public class UserService {
 	}
 	
 	// 파일 업로드
-	private void uploadFileCreat(MultipartFile file, String uploadPath) {
+	private void uploadFileCreate(MultipartFile file, String uploadPath) {
 		String getOriginalFilename = file.getOriginalFilename();
 		File filePath = new File(uploadPath);
 		if (!filePath.exists()) {

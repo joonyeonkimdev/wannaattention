@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +26,7 @@ public class AnimalService {
 	public void tempUpload(MultipartFile tempFile, HttpServletRequest request) {
 		if(tempFile != null && !tempFile.isEmpty()) {
 			String tempUploadPath = request.getServletContext().getRealPath("/") + "tempUploadFile/";
-			uploadFileCreat(tempFile, tempUploadPath);
+			uploadFileCreate(tempFile, tempUploadPath);
 		}
 	}
 
@@ -66,7 +64,7 @@ public class AnimalService {
 	}
 	
 	// 파일 업로드
-	private void uploadFileCreat(MultipartFile file, String uploadPath) {
+	private void uploadFileCreate(MultipartFile file, String uploadPath) {
 		String getOriginalFilename = file.getOriginalFilename();
 		File filePath = new File(uploadPath);
 		if (!filePath.exists()) {
