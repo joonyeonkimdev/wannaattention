@@ -68,6 +68,10 @@ public class CommunityService {
 		return dao.boardList(pageNum, limit, boardType);
 	}
 
+	public void readCntAdd(Integer boardNum) {
+		dao.readCntAdd(boardNum);
+	}
+
 	
 	
 }

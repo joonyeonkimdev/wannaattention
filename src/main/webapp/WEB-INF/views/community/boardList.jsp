@@ -22,28 +22,36 @@
 		<br>
 		<h2>${boardName }</h2>
 		<hr>
-		<c:if test="${loginUser != null && !empty loginUser }">
-			<c:choose>
-				<c:when test="${loginUser.id == 'admin'}">
+		<c:choose>
+			<c:when test="${loginUser != null && !empty loginUser}">
+				<c:if test="${loginUser.id == 'admin' }">
+					<div class="row">
+					<div class="col-lg-11"></div>
+					<div class="btn-group mt-5" role="group">
+						<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
+					</div>
+				</div>
+				</c:if>
+				<c:if test="${loginUser.id != 'admin' && (boardType == '4' || boardType == '5')}">
 					<div class="row">
 						<div class="col-lg-11"></div>
 						<div class="btn-group mt-5" role="group">
 							<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
 						</div>
 					</div>
-				</c:when>
-				<c:otherwise>
-					<c:if test="${boardType == '4' || boardType == '5'}">
-						<div class="row">
-							<div class="col-lg-11"></div>
-							<div class="btn-group mt-5" role="group">
-								<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
-							</div>
+				</c:if>
+			</c:when>
+			<c:otherwise>
+				<c:if test="${boardType == '4' || boardType == '5'}">
+					<div class="row">
+						<div class="col-lg-11"></div>
+						<div class="btn-group mt-5" role="group">
+							<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
 						</div>
-					</c:if>
-				</c:otherwise>
-			</c:choose>
-		</c:if>
+					</div>
+				</c:if>
+			</c:otherwise>
+		</c:choose>
 		<div class="row mt-5">
 			<table class="table table-hover">
 				<thead>
@@ -109,6 +117,5 @@
 			</nav>
 		</div>
 	</div>
-
 </body>
 </html>

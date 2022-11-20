@@ -45,5 +45,9 @@ public class CommunityDAO {
 		return template.getMapper(CommunityMapper.class).boardList(param);
 	}
 
+	public void readCntAdd(Integer boardNum) {
+		template.getMapper(CommunityMapper.class).readCntAdd(boardNum);
+	}
+
 	
 }

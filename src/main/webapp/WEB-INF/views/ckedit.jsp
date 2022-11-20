@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%> 
 <script>
 	window.parent.CKEDITOR.tools.callFunction
-	(${CKEditorFuncNum},'${fileName}','이미지 업로드 완료')
+	(${CKEditorFuncNum}, '${fileName}', '이미지 업로드 완료');
 </script>

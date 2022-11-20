@@ -1,6 +1,11 @@
 package com.wannaattention.www.controller;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.wannaattention.www.service.CommunityService;
 import com.wannaattention.www.vo.Board;
+import com.wannaattention.www.vo.User;
 
 @Controller
 @RequestMapping("community")
@@ -32,16 +38,33 @@ public class CommunityController {
 		File f = new File(path);
 		if(!f.exists()) f.mkdirs();
 		if(!upload.isEmpty()) {
-		  File file = new File(path,upload.getOriginalFilename());
+		  File file = new File(path, upload.getOriginalFilename());
 		  try {
 			  upload.transferTo(file);
 		  }catch (Exception e) {
 			  e.printStackTrace();
 		  }
 		}
-		String fileName = request.getContextPath() + "/boardPhoto/" + upload.getOriginalFilename();		
-		model.addAttribute("fileName",fileName);
-		model.addAttribute("CKEditorFuncNum",CKEditorFuncNum);
+		
+		// 파일이름 변경
+		HttpSession session = request.getSession();
+		User loginUser = (User)session.getAttribute("loginUser");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmm"); 
+		String nowDate = simpleDateFormat.format(new Date()); 
+		File currentFile = new File(path + upload.getOriginalFilename());
+		File newFile = new File(path + loginUser.getId() + "_ckedit_" + nowDate + upload.getOriginalFilename().substring(upload.getOriginalFilename().lastIndexOf(".")));
+		try {
+			Files.copy(currentFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (currentFile.exists()) {
+			currentFile.delete();
+		}
+		String fileName = path + loginUser.getId() + "_ckedit_" + nowDate + upload.getOriginalFilename().substring(upload.getOriginalFilename().lastIndexOf("."));		
+		System.out.println(fileName);
+		model.addAttribute("fileName", fileName);
+		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);
 		return "/ckedit";
 	}
 	
@@ -105,6 +128,7 @@ public class CommunityController {
 		}
 		mav.addObject(new Board());
 		session.setAttribute("boardName", boardName);
+		service.readCntAdd(boardNum);
 		Board board = service.selectBoardByBN(boardNum);
 		mav.addObject("board", board);
 		return mav;
@@ -152,6 +176,8 @@ public class CommunityController {
 		mav.addObject("boardNo", boardNo);
 		return mav;
 	}
+	
+	
 	
 	
 	

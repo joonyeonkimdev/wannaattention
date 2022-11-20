@@ -32,6 +32,9 @@ public interface CommunityMapper {
 			" WHERE RNUM BETWEEN #{startRow} AND #{endRow}")
 	public List<Board> boardList(Map<String, Object> param);
 
+	@Select("UPDATE BOARD_TB SET READ_CNT = READ_CNT + 1 WHERE BOARD_NUM = #{boardNum}")
+	public void readCntAdd(Integer boardNum);
+
 	
 
 }
