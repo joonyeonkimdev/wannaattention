@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 
 import com.wannaattention.www.vo.Board;
 
-public interface BoardMapper {
+public interface CommunityMapper {
 
 	@Select("SELECT NVL(MAX(BOARD_NUM), 0) FROM BOARD_TB")
 	public int getMaxBoardNum();

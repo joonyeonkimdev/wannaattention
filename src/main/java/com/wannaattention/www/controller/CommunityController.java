@@ -1,5 +1,6 @@
 package com.wannaattention.www.controller;
 
+import java.io.File;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,21 +9,41 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.wannaattention.www.service.BoardService;
-import com.wannaattention.www.vo.Animal;
+import com.wannaattention.www.service.CommunityService;
 import com.wannaattention.www.vo.Board;
 
 @Controller
 @RequestMapping("community")
 public class CommunityController {
 	@Autowired
-	private BoardService service;
+	private CommunityService service;
+	
+	@RequestMapping("imgupload")
+	public String imgupload(MultipartFile upload, String CKEditorFuncNum, HttpServletRequest request, Model model) {
+		String path = request.getServletContext().getRealPath("/") +"boardPhoto/";
+		File f = new File(path);
+		if(!f.exists()) f.mkdirs();
+		if(!upload.isEmpty()) {
+		  File file = new File(path,upload.getOriginalFilename());
+		  try {
+			  upload.transferTo(file);
+		  }catch (Exception e) {
+			  e.printStackTrace();
+		  }
+		}
+		String fileName = request.getContextPath() + "/boardPhoto/" + upload.getOriginalFilename();		
+		model.addAttribute("fileName",fileName);
+		model.addAttribute("CKEditorFuncNum",CKEditorFuncNum);
+		return "/ckedit";
+	}
 	
 	@GetMapping("boardWrite")
 	public ModelAndView boardWrite(HttpSession session) {

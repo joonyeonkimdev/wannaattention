@@ -17,41 +17,23 @@
 			<div class="card-body">
 				<form>
 					<div class="form-group mt-5">
-						<div class="input-group-prepend">
-							<span class="input-group-text">글 번호</span>
+						<div class="input-group-prepend d-flex justify-content-center">
+							<h3>${board.title}</h3>
 						</div>
-						<input type="text" class="form-control" id="boardNum" value="${board.boardNum}" disabled="disabled">
-					</div>
-					<div class="form-group mt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">제목</span>
-						</div>
-						<input type="text" class="form-control" id="title" value="${board.title}" disabled="disabled">
-					</div>
-					<div class="form-group mt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">조회수</span>
-						</div>
-						<input type="text" class="form-control" id="title" value="${board.readCnt}" disabled="disabled">
-					</div>
-					<div class="form-group mt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">내용</span>
-						</div>
-						<textarea class="form-control" id="content" disabled="disabled" rows="10">${board.content}</textarea>
-					</div>
-					<div class="form-group mt-3">
-						<div class="input-group-prepend">
-							<span class="input-group-text">작성자</span>
-						</div>
-						<input type="text" class="form-control" id="writerNickname" value="${board.writerNickname}" disabled="disabled">
-					</div>
-					<div class="form-group mt-3">
+						<br>
+						${board.writerNickname}
 						<fmt:formatDate var="regDate" value="${board.regDate }" pattern="yyyy-MM-dd HH:mm"/>
-						<div class="input-group-prepend">
-							<span class="input-group-text">등록일</span>
-						</div>
-						<input type="text" class="form-control" id="regDate" value="${regDate}" disabled="disabled">
+						${regDate}
+						<br>
+						조회 ${board.readCnt}
+					</div>
+					<hr>
+					<div class="form-group mt-3">
+						${board.content}
+					</div>
+	
+					<div class="form-group mt-3">
+						
 					</div>
 				</form>
 			</div>

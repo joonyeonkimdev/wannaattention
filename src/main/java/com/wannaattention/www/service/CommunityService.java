@@ -12,13 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.wannaattention.www.dao.BoardDAO;
+import com.wannaattention.www.dao.CommunityDAO;
 import com.wannaattention.www.vo.Board;
 
 @Service
-public class BoardService {
+public class CommunityService {
 	@Autowired
-	private BoardDAO dao;
+	private CommunityDAO dao;
 
 	public int insertBoard(Board board, HttpServletRequest request) {
 		int maxBoardNum = dao.getMaxBoardNum();

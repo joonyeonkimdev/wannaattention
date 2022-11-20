@@ -22,26 +22,28 @@
 		<br>
 		<h2>${boardName }</h2>
 		<hr>
-		<c:choose>
-			<c:when test="${loginUser != null && !empty loginUser }">
-				<div class="row">
-					<div class="col-lg-11"></div>
-					<div class="btn-group mt-5" role="group">
-						<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
-					</div>
-				</div>
-			</c:when>
-			<c:otherwise>
-				<c:if test="${boardType == '4' || boardType == '5'}">
+		<c:if test="${loginUser != null && !empty loginUser }">
+			<c:choose>
+				<c:when test="${loginUser.id == 'admin'}">
 					<div class="row">
-					<div class="col-lg-11"></div>
-					<div class="btn-group mt-5" role="group">
-						<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
+						<div class="col-lg-11"></div>
+						<div class="btn-group mt-5" role="group">
+							<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
+						</div>
 					</div>
-				</div>
-				</c:if>
-			</c:otherwise>
-		</c:choose>
+				</c:when>
+				<c:otherwise>
+					<c:if test="${boardType == '4' || boardType == '5'}">
+						<div class="row">
+							<div class="col-lg-11"></div>
+							<div class="btn-group mt-5" role="group">
+								<button type="button" class="btn btn-outline-success" onclick="location.href='boardWrite'">글 등록</button>
+							</div>
+						</div>
+					</c:if>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
 		<div class="row mt-5">
 			<table class="table table-hover">
 				<thead>

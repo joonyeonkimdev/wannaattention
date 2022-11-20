@@ -13,25 +13,25 @@ import org.springframework.stereotype.Repository;
 import com.wannaattention.www.vo.Board;
 
 @Repository
-public class BoardDAO {
+public class CommunityDAO {
 	@Autowired
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();
 	
 	public int getMaxBoardNum() {
-		return template.getMapper(BoardMapper.class).getMaxBoardNum();
+		return template.getMapper(CommunityMapper.class).getMaxBoardNum();
 	}
 	
 	public int insertBoard(Board board) {
-		return template.getMapper(BoardMapper.class).insertBoard(board);
+		return template.getMapper(CommunityMapper.class).insertBoard(board);
 	}
 
 	public Board selectBoardByBN(Integer boardNum) {
-		return template.getMapper(BoardMapper.class).selectBoardByBN(boardNum);
+		return template.getMapper(CommunityMapper.class).selectBoardByBN(boardNum);
 	}
 
 	public int boardCount(String boardType) {
-		return template.getMapper(BoardMapper.class).boardCount(boardType);
+		return template.getMapper(CommunityMapper.class).boardCount(boardType);
 		
 	}
 
@@ -42,7 +42,7 @@ public class BoardDAO {
 		param.put("startRow", startRow);
 		param.put("endRow", endRow);
 		param.put("boardType", boardType);
-		return template.getMapper(BoardMapper.class).boardList(param);
+		return template.getMapper(CommunityMapper.class).boardList(param);
 	}
 
 	
