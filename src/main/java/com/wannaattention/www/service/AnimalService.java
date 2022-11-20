@@ -81,8 +81,8 @@ public class AnimalService {
 		return dao.animalCount();
 	}
 
-	public List<Animal> animalList(Integer pageNum, int limit) {
-		return dao.animalList(pageNum, limit);
+	public List<Animal> animalList(Integer pageNum, int limit, String species) {
+		return dao.animalList(pageNum, limit, species);
 	}
 
 	public Animal selectAnimal(Integer animalNum) {

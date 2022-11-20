@@ -12,11 +12,11 @@
 	<div class="container mt-5">
 		<nav>
 			<ol class="breadcrumb bg-light d-flex justify-content-center">
-				<li class="breadcrumb-item"><a href="#">공지사항</a></li>
-				<li class="breadcrumb-item"><a href="#">후원금 사용내역</a></li>
-				<li class="breadcrumb-item"><a href="#">QnA</a></li>
-				<li class="breadcrumb-item"><a href="#">자유게시판</a></li>
-				<li class="breadcrumb-item active"><a href="#">입양 후기</a></li>
+				<li class="breadcrumb-item"><a href="boardList?boardType=1">공지사항</a></li>
+				<li class="breadcrumb-item"><a href="boardList?boardType=2">후원금 사용내역</a></li>
+				<li class="breadcrumb-item"><a href="boardList?boardType=3">QnA</a></li>
+				<li class="breadcrumb-item"><a href="boardList?boardType=4">자유게시판</a></li>
+				<li class="breadcrumb-item active"><a href="boardList?boardType=5">입양 후기</a></li>
 			</ol>
 		</nav>
 		<br>
@@ -91,7 +91,7 @@
 					<%-- 앞으로 --%>
 					<c:if test="${pageNum > 1}">
 						<li class="page-item">
-							<a class="page-link" href="boardList?pageNum=${pageNum - 1}">Previous</a>
+							<a class="page-link" href="boardList?boardType=${boardType }&pageNum=${pageNum - 1}">Previous</a>
 						</li>
 					</c:if>
 					<c:if test="${pageNum <= 1}">
@@ -103,12 +103,12 @@
 							<li class="page-item disabled"><a class="page-link">${a}</a></li>
 						</c:if>
 						<c:if test="${a != pageNum}">
-							<li class="page-item"><a class="page-link" href="boardList?pageNum=${a}">${a}</a></li>
+							<li class="page-item"><a class="page-link" href="boardList?boardType=${boardType }&pageNum=${a}">${a}</a></li>
 						</c:if>
 					</c:forEach>
 					<%-- 뒤로 --%>
 					<c:if test="${pageNum < maxPage}">
-						<li class="page-item"><a class="page-link" href="boardList?pageNum=${pageNum + 1}">Next</a></li>
+						<li class="page-item"><a class="page-link" href="boardList?boardType=${boardType }&pageNum=${pageNum + 1}">Next</a></li>
 					</c:if>
 					<c:if test="${pageNum >= maxPage}">
 						<li class="page-item disabled"><a class="page-link">Next</a></li>

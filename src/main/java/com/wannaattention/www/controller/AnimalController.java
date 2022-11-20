@@ -60,10 +60,13 @@ public class AnimalController {
 		if(pageNum == null || pageNum.toString().equals("")) {
 			   pageNum = 1;
 		}
+		if (species == null || species.equals("")) {
+			species = "0";
+		}
 		
 		int limit = 10;
 		int listCount = service.animalCount(); // 동물 리스트 갯수
-		List<Animal> animalList = service.animalList(pageNum, limit); // 동물 리스트 가져오기 
+		List<Animal> animalList = service.animalList(pageNum, limit, species); // 동물 리스트 가져오기 
 		
 		int maxPage = (int)((double)listCount/limit + 0.95); // 출력 최대 페이지
 		int startPage = (int)((pageNum/10.0 + 0.9) - 1) * 10 + 1; // 페이징 시작번호
@@ -78,6 +81,7 @@ public class AnimalController {
 		mav.addObject("endPage", endPage); 
 		mav.addObject("listCount", listCount);
 		mav.addObject("animalList", animalList);
+		mav.addObject("species", species);
 		return mav;
 	}
 	

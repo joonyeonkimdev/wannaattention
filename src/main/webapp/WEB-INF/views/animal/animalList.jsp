@@ -22,10 +22,10 @@
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="btn-group col-lg-4 mt-5" role="group" style="text-align:center;">
-				<button type="button" id="button0" class="btn btn-outline-secondary" onclick="">전체</button>
-				<button type="button" id="button1" class="btn btn-outline-primary" onclick="">강아지</button>
-				<button type="button" id="button2" class="btn btn-outline-primary" onclick="">고양이</button>
-				<button type="button" id="button3" class="btn btn-outline-primary" onclick="">기타</button>
+				<button type="button" id="button0" class="btn btn-outline-secondary" onclick="location.href='animalList?species=0'">전체</button>
+				<button type="button" id="button1" class="btn btn-outline-primary" onclick="location.href='animalList?species=1'">강아지</button>
+				<button type="button" id="button2" class="btn btn-outline-primary" onclick="location.href='animalList?species=2'">고양이</button>
+				<button type="button" id="button3" class="btn btn-outline-primary" onclick="location.href='animalList?species=3'">기타</button>
 			</div>
 		</div>
 		<%-- 글등록 버튼(보호소 유저만) --%>
@@ -92,7 +92,7 @@
 					<%-- 앞으로 --%>
 					<c:if test="${pageNum > 1}">
 						<li class="page-item">
-							<a class="page-link" href="animalList?pageNum=${pageNum - 1}">Previous</a>
+							<a class="page-link" href="animalList?species=${species }&pageNum=${pageNum - 1}">Previous</a>
 						</li>
 					</c:if>
 					<c:if test="${pageNum <= 1}">
@@ -105,12 +105,12 @@
 							<li class="page-item disabled"><a class="page-link">${a}</a></li>
 						</c:if>
 						<c:if test="${a != pageNum}">
-							<li class="page-item"><a class="page-link" href="animalList?pageNum=${a}">${a}</a></li>
+							<li class="page-item"><a class="page-link" href="animalList?species=${species }&pageNum=${a}">${a}</a></li>
 						</c:if>
 					</c:forEach>
 					<%-- 뒤로 --%>
 					<c:if test="${pageNum < maxPage}">
-						<li class="page-item"><a class="page-link" href="animalList?pageNum=${pageNum + 1}">Next</a></li>
+						<li class="page-item"><a class="page-link" href="animalList?species=${species }&pageNum=${pageNum + 1}">Next</a></li>
 					</c:if>
 					<c:if test="${pageNum >= maxPage}">
 						<li class="page-item disabled"><a class="page-link">Next</a></li>

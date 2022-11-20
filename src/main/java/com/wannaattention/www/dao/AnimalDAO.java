@@ -31,12 +31,13 @@ public class AnimalDAO {
 		return template.getMapper(AnimalMapper.class).animalCount();
 	}
 
-	public List<Animal> animalList(Integer pageNum, int limit) {
+	public List<Animal> animalList(Integer pageNum, int limit, String species) {
 		int startRow = (pageNum - 1) * limit + 1; 
 		int endRow = startRow + limit - 1;
 		param.clear();
 		param.put("startRow", startRow);
 		param.put("endRow", endRow);
+		param.put("species", species);
 		return template.getMapper(AnimalMapper.class).animalList(param);
 	}
 

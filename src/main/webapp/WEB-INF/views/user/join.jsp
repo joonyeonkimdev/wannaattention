@@ -251,7 +251,7 @@
 			<form:hidden path="userType" value="0"/>
 			
 			<div class="form-group col-lg-4 mt-5">
-				<img src="../../../resources/images/profile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic">
+				<img src="../../../resources/images/profile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic" class="img-fluid">
 				<br>
 				프로필
 			</div>
