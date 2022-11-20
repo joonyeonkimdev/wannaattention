@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>방문예약 확인</title>
+<script type="text/javascript">
+	window.alert("방문 예약이 완료되었습니다.");
+</script>
 </head>
 <body>
 	<div class="mt-5">

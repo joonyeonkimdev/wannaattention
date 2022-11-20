@@ -43,8 +43,8 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">실종동물 찾기</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${path}/animal/missingAnimalList">실종 동물 보기</a>
-							<a class="dropdown-item" href="${path}/animal/missingAnimalWrite">실종 동물 신고</a>
+							<a class="dropdown-item" href="${path}/missing/missingList">실종 동물 보기</a>
+							<a class="dropdown-item" href="${path}/missing/missingRegister">실종 동물 신고</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">

@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입 확인</title>
+<script type="text/javascript">
+	window.alert("회원가입이 완료되었습니다.");
+</script>
 </head>
 <body>
 	<div class="mt-5">
@@ -14,8 +17,8 @@
 	</div>
 	<br><br><br>
 	<div class="mt-5">
-		<a href="login"><button type="button" class="btn btn-primary">로그인</button></a>
-		<a href="/"><button type="button" class="btn btn-primary">홈으로</button></a>
+		<a href="login"><button type="button" class="btn btn-success">로그인</button></a>
+		<a href="/"><button type="button" class="btn btn-success">홈으로</button></a>
 	</div>
 </body>
 </html>

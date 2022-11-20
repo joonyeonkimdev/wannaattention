@@ -43,6 +43,7 @@
 			<mapping path="/animal/animalRegister"/>
 			<mapping path="/animal/booking"/>
 			<mapping path="/community/boardWrite"/>
+			<mapping path="/missing/missingRegister"/>
 			<beans:ref bean="InterceptorForLogin"/>
 		</interceptor>
 		<interceptor>

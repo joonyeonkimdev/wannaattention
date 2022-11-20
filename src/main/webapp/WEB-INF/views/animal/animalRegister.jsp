@@ -11,9 +11,8 @@
 <title>입양 동물 등록하기</title>
 <style type="text/css">
 	.profileDefaultPic {
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
+		width: 300px;
+		height: 300px;
 	}
 </style>
 <script type="text/javascript">
@@ -158,7 +157,7 @@
 		<hr>
 		<form:form modelAttribute="animal" action="animalRegister" enctype="multipart/form-data" name="f" onsubmit="return onSubmit();">
 			<div class="form-group col-lg-4 mt-5">
-				<img src="../../../resources/images/profile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic">
+				<img src="../../../resources/images/animProfile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic">
 				<br>
 				프로필
 			</div>

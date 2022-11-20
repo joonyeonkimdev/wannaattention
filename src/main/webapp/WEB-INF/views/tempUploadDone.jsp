@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 	opener.document.f.profileDefaultPic.src = "/tempUploadFile/${filename}";
-	opener.document.f.profileFilename.value = "${filename}";
+	if(document.getElementById('profileFilename')){
+		opener.document.f.profileFilename.value = "${filename}";
+	} else if (document.getElementById('photoFilename')) {
+		opener.document.f.photoFilename.value = "${filename}";
+	}
 	self.close();
 </script>
