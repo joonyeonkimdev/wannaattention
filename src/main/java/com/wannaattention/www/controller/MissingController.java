@@ -53,7 +53,7 @@ public class MissingController {
 		mav.setViewName("redirect:missingDetail?missingAnimalNum=" + missingAnimalNum);
 		return mav;
 	}
-	
+
 	@RequestMapping("missingDetail")
 	public ModelAndView missingDetail(Integer missingAnimalNum) {
 		ModelAndView mav = new ModelAndView();
