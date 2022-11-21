@@ -57,7 +57,7 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">정보 	게시판</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${path}/info/animalHpitalList">동물 병원</a>
+							<a class="dropdown-item" href="${path}/info/animalHospitalList">동물 병원</a>
 							<a class="dropdown-item" href="${path}/info/animalHotelList">동물 호텔</a>
 							<a class="dropdown-item" href="${path}/info/animalSalonList">동물 미용실</a>
 							<a class="dropdown-item" href="${path}/info/animalFestList">동물 축제</a>
