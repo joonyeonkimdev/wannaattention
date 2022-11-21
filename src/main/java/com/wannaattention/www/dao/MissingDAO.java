@@ -29,16 +29,19 @@ public class MissingDAO {
 		return template.getMapper(MissingMapper.class).selectMissingAnimal(missingAnimalNum);
 	}
 
-	public int missingCount() {
-		return template.getMapper(MissingMapper.class).missingCount();
+	public int missingCount(String species) {
+		param.clear();
+		param.put("species", species);
+		return template.getMapper(MissingMapper.class).missingCount(param);
 	}
 
-	public List<MissingAnimal> missingList(Integer pageNum, int limit) {
+	public List<MissingAnimal> missingList(Integer pageNum, int limit, String species) {
 		int startRow = (pageNum - 1) * limit + 1; 
 		int endRow = startRow + limit - 1;
 		param.clear();
 		param.put("startRow", startRow);
 		param.put("endRow", endRow);
+		param.put("species", species);
 		return template.getMapper(MissingMapper.class).missingList(param);
 	}
 

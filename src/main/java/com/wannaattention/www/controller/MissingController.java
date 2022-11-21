@@ -70,8 +70,8 @@ public class MissingController {
 		}
 		
 		int limit = 10;
-		int listCount = service.missingCount(); // 동물 리스트 갯수
-		List<MissingAnimal> missingList = service.missingList(pageNum, limit); // 동물 리스트 가져오기 
+		int listCount = service.missingCount(species); // 동물 리스트 갯수
+		List<MissingAnimal> missingList = service.missingList(pageNum, limit, species); // 동물 리스트 가져오기 
 		
 		int maxPage = (int)((double)listCount/limit + 0.95); // 출력 최대 페이지
 		int startPage = (int)((pageNum/10.0 + 0.9) - 1) * 10 + 1; // 페이징 시작번호
@@ -86,6 +86,7 @@ public class MissingController {
 		mav.addObject("endPage", endPage); 
 		mav.addObject("listCount", listCount);
 		mav.addObject("missingList", missingList);
+		mav.addObject("species", species);
 		return mav;
 	}
 	

@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>실종 목록 보기</title>
+<script type="text/javascript">
+	function filter_species(num) {
+		location.href='missingList?species=' + num;
+	}
+</script>
 <style type="text/css">
 	a {
 		text-decoration: none;
@@ -20,10 +25,10 @@
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="btn-group col-lg-4 mt-5" role="group" style="text-align:center;">
-				<button type="button" id="button0" class="btn btn-outline-primary" onclick="filter_status(0)">전체</button>
-				<button type="button" id="button1" class="btn btn-outline-primary" onclick="filter_status(0)">강아지</button>
-				<button type="button" id="button2" class="btn btn-outline-primary" onclick="filter_status(0)">고양이</button>
-				<button type="button" id="button3" class="btn btn-outline-primary" onclick="filter_status(0)">기타</button>
+				<button type="button" id="button0" class="btn btn-outline-primary" onclick="filter_species(0)">전체</button>
+				<button type="button" id="button1" class="btn btn-outline-primary" onclick="filter_species(1)">강아지</button>
+				<button type="button" id="button2" class="btn btn-outline-primary" onclick="filter_species(2)">고양이</button>
+				<button type="button" id="button3" class="btn btn-outline-primary" onclick="filter_species(3)">기타</button>
 			</div>
 		</div>
 		<div class="row">

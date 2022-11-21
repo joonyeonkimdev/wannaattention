@@ -23,14 +23,21 @@ public interface MissingMapper {
 			+ " FROM MISSING_ANIMAL_TB M, USER_TB U WHERE M.WRITER_NUM = U.USER_NUM AND M.MISSING_ANIMAL_NUM = #{missingAnimalNum}")
 	public MissingAnimal selectMissingAnimal(Integer missingAnimalNum);
 
-	@Select("SELECT COUNT(*) FROM MISSING_ANIMAL_TB")
-	public int missingCount();
+	@Select({"<script>",
+		"SELECT COUNT(*) FROM MISSING_ANIMAL_TB",
+		"<if test='species != null and species != \"0\"'> WHERE SPECIES = #{species}</if>",
+		"</script>"})
+	public int missingCount(Map<String, Object> param);
 
-	@Select("SELECT *" + 
+	@Select({"<script>",
+			"SELECT *" + 
 			" FROM (SELECT ROWNUM AS RNUM, MISSING_ANIMAL_NUM, WRITER_NUM, WRITER_NICKNAME, STATUS, SPECIES, BREED, GENDER, LOCATION, REG_DATE, DESCRIPTION, PHOTO_FILENAME" + 
 			" FROM (SELECT M.MISSING_ANIMAL_NUM, U.USER_NUM AS WRITER_NUM, U.NICKNAME AS WRITER_NICKNAME, M.STATUS, M.SPECIES, M.BREED, M.GENDER, M.LOCATION, M.REG_DATE, M.DESCRIPTION ,M.PHOTO_FILENAME" + 
-			" FROM MISSING_ANIMAL_TB M, USER_TB U WHERE M.WRITER_NUM = U.USER_NUM ORDER BY M.REG_DATE DESC))" + 
-			" WHERE RNUM BETWEEN #{startRow} AND #{endRow}")
+			" FROM MISSING_ANIMAL_TB M, USER_TB U WHERE M.WRITER_NUM = U.USER_NUM",
+			" <if test='species != null and species != \"0\"'> AND M.SPECIES = #{species}</if>",
+			" ORDER BY M.REG_DATE DESC))" + 
+			" WHERE RNUM BETWEEN #{startRow} AND #{endRow}",
+			"</script>"})
 	public List<MissingAnimal> missingList(Map<String, Object> param);
 
 	@Delete("DELETE FROM MISSING_ANIMAL_TB WHERE MISSING_ANIMAL_NUM = #{missingAnimalNum}")

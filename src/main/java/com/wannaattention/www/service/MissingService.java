@@ -63,12 +63,12 @@ public class MissingService {
 		return dao.selectMissingAnimal(missingAnimalNum);
 	}
 
-	public int missingCount() {
-		return dao.missingCount();
+	public int missingCount(String species) {
+		return dao.missingCount(species);
 	}
 
-	public List<MissingAnimal> missingList(Integer pageNum, int limit) {
-		return dao.missingList(pageNum, limit);
+	public List<MissingAnimal> missingList(Integer pageNum, int limit, String species) {
+		return dao.missingList(pageNum, limit, species);
 	}
 
 	public void deleteMissing(Integer missingAnimalNum) {
