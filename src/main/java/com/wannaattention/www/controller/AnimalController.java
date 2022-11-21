@@ -65,7 +65,7 @@ public class AnimalController {
 		}
 		
 		int limit = 10;
-		int listCount = service.animalCount(); // 동물 리스트 갯수
+		int listCount = service.animalCount(species); // 동물 리스트 갯수
 		List<Animal> animalList = service.animalList(pageNum, limit, species); // 동물 리스트 가져오기 
 		
 		int maxPage = (int)((double)listCount/limit + 0.95); // 출력 최대 페이지
