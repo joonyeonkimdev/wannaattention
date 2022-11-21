@@ -99,5 +99,33 @@ public class MissingController {
 		return mav;
 	}
 	
+	@GetMapping("missingUpdate")
+	public ModelAndView missingUpdate(Integer missingAnimalNum) {
+		ModelAndView mav = new ModelAndView();
+		MissingAnimal missingAnimal = service.selectMissingAnimal(missingAnimalNum);
+		mav.addObject("missingAnimal", missingAnimal);
+		return mav;
+	}
+	
+	@PostMapping("missingUpdate")
+	public ModelAndView missingUpdate(@Valid MissingAnimal missingAnimal, BindingResult bindingresult, HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.input.missing");
+			return mav;
+		}
+		try {
+		    service.updateMissing(missingAnimal, request);
+		} catch(Exception e) {
+			e.printStackTrace();
+			bindingresult.reject("error.update.missing");
+			mav.getModel().putAll(bindingresult.getModel());
+			return mav;
+		}
+		mav.setViewName("redirect:missingDetail?missingAnimalNum=" + missingAnimal.getMissingAnimalNum());
+		return mav;
+	}
+	
 	
 }

@@ -29,7 +29,7 @@ public interface AnimalMapper {
 			" FROM (SELECT ROWNUM AS RNUM, ANIMAL_NUM, SHELTER_NUM, SHELTER_NAME, NAME, AGE, SPECIES, BREED, GENDER, NEUTRALIZATION, VACCINATION, ENTER_DATE, PROTECT_END_DATE, ADOPT_STEP, PROFILE_FILENAME" + 
 			" FROM (SELECT A.ANIMAL_NUM, A.SHELTER_NUM, U.NAME AS SHELTER_NAME, A.NAME, A.AGE, A.SPECIES, A.BREED, A.GENDER, A.NEUTRALIZATION, A.VACCINATION, A.ENTER_DATE, A.PROTECT_END_DATE, A.ADOPT_STEP, A.PROFILE_FILENAME" + 
 			" FROM ANIMAL_TB A, USER_TB U WHERE A.SHELTER_NUM = U.USER_NUM",
-			"<if test='species != null and species != \"0\"'> AND A.SPECIES = #{species}</if>",
+			"<if test='species != null and species != \'0\''> AND A.SPECIES = #{species}</if>",
 			" ORDER BY A.PROTECT_END_DATE)) WHERE RNUM BETWEEN #{startRow} AND #{endRow}",
 			"</script>"})
 	public List<Animal> animalList(Map<String, Object> param);

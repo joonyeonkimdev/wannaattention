@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.wannaattention.www.vo.MissingAnimal;
 
@@ -34,5 +35,10 @@ public interface MissingMapper {
 
 	@Delete("DELETE FROM MISSING_ANIMAL_TB WHERE MISSING_ANIMAL_NUM = #{missingAnimalNum}")
 	public void deleteMissing(Integer missingAnimalNum);
+
+	@Update("UPDATE MISSING_ANIMAL_TB"
+			+ " SET MISSING_ANIMAL_NUM = #{missingAnimalNum}, WRITER_NUM = #{writerNum}, STATUS = #{status}, SPECIES = #{species}, BREED = #{breed}, GENDER = #{gender}, LOCATION = #{location}, REG_DATE = #{regDate}, DESCRIPTION = #{description}, PHOTO_FILENAME = #{photoFilename}"
+			+ " WHERE MISSING_ANIMAL_NUM = #{missingAnimalNum}")
+	public void updateMissing(MissingAnimal missingAnimal);
 
 }

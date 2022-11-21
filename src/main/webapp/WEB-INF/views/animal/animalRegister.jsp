@@ -157,7 +157,7 @@
 		<hr>
 		<form:form modelAttribute="animal" action="animalRegister" enctype="multipart/form-data" name="f" onsubmit="return onSubmit();">
 			<div class="form-group col-lg-4 mt-5">
-				<img src="../../../resources/images/animProfile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic" class="img-fluid">
+				<img src="../../../resources/images/animProfile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic">
 				<br>
 				프로필
 			</div>

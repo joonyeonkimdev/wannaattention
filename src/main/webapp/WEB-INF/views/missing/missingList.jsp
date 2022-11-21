@@ -49,7 +49,17 @@
 								<img src="/missingPhoto/${missingAnimal.photoFilename }" width="200px" height="200px">
 							</td>
 							<td>
-								${missingAnimal.status }
+								<c:choose>
+									<c:when test="${missingAnimal.status == '1' }">
+										실종
+									</c:when>
+									<c:when test="${missingAnimal.status == '2' }">
+										목격
+									</c:when>
+									<c:when test="${missingAnimal.status == '3' }">
+										보호 중
+									</c:when>
+								</c:choose>
 							</td>
 							<td>
 								${missingAnimal.location }
