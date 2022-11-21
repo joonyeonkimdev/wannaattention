@@ -46,6 +46,7 @@
 			<mapping path="/animal/animalUpdate"/>
 			<mapping path="/community/boardWrite"/>
 			<mapping path="/missing/missingRegister"/>
+			<mapping path="/missing/missingUpdate"/>
 			<beans:ref bean="InterceptorForLogin"/>
 		</interceptor>
 		<interceptor>
@@ -58,6 +59,7 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/animal/animalUpdate"/>
+			<mapping path="/missing/missingUpdate"/>
 			<beans:ref bean="InterceptorForMyPost"/>
 		</interceptor>
 	</interceptors>

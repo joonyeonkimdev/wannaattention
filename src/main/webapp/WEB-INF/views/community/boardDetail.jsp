@@ -7,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>게시글 상세</title>
+<script type="text/javascript">
+	function delete_confirm() {
+		let flag = confirm("게시글을 삭제하시겠습니까?");
+		if (flag) {
+			location.href="boardDelete?baordNum=${board.boardNum}";
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="container">
@@ -41,19 +49,15 @@
 		<div>
 			<c:choose>
 				<c:when test="${loginUser.id == 'admin' }">
-					<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardReply'">답글</button>
 					<c:if test="${loginUser.userNum == board.writerNum }">
 						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate'">수정</button>
 					</c:if>
-					<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardDelete'">삭제</button>
+					<button type="button" class="btn btn-outline-success mt-3" onclick="delete_confirm()">삭제</button>
 				</c:when>
 				<c:otherwise>
-					<c:if test="${board.writerNum != loginUser.userNum && (board.boardType == '4' || board.boardType == '5')}">
-						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardReply'">답글</button>
-					</c:if>
 					<c:if test="${board.writerNum == loginUser.userNum }">
 						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate'">수정</button>
-						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardDelete'">삭제</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="delete_confirm()">삭제</button>
 					</c:if>
 				</c:otherwise>
 			</c:choose>

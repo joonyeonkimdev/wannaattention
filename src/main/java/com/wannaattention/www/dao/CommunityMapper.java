@@ -3,6 +3,7 @@ package com.wannaattention.www.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -34,6 +35,9 @@ public interface CommunityMapper {
 
 	@Select("UPDATE BOARD_TB SET READ_CNT = READ_CNT + 1 WHERE BOARD_NUM = #{boardNum}")
 	public void readCntAdd(Integer boardNum);
+
+	@Delete("DELETE FROM BOARD_TB WHERE BOARD_NUM = #{boardNum}")
+	public void deleteBoard(Integer boardNum);
 
 	
 

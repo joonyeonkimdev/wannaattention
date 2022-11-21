@@ -177,6 +177,17 @@ public class CommunityController {
 		return mav;
 	}
 	
+	@RequestMapping("boardDelete")
+	public ModelAndView boardDelete(Integer boardNum) {
+		ModelAndView mav = new ModelAndView();
+		service.deleteBoard(boardNum);
+		mav.addObject("msg", "게시글이 삭제되었습니다.");
+		mav.addObject("url", "boardList");
+		mav.setViewName("/alert");
+		return mav;
+		
+	}
+	
 	
 	
 	
