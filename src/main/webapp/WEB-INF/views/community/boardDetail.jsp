@@ -50,13 +50,13 @@
 			<c:choose>
 				<c:when test="${loginUser.id == 'admin' }">
 					<c:if test="${loginUser.userNum == board.writerNum }">
-						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate'">수정</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate?boardNum=${board.boardNum}'">수정</button>
 					</c:if>
 					<button type="button" class="btn btn-outline-success mt-3" onclick="delete_confirm()">삭제</button>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${board.writerNum == loginUser.userNum }">
-						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate'">수정</button>
+						<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='boardUpdate?boardNum=${board.boardNum}'">수정</button>
 						<button type="button" class="btn btn-outline-success mt-3" onclick="delete_confirm()">삭제</button>
 					</c:if>
 				</c:otherwise>

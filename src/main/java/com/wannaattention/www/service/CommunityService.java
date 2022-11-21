@@ -76,6 +76,9 @@ public class CommunityService {
 		dao.deleteBoard(boardNum);	
 	}
 
+	public void updateBoard(Board board) {
+		dao.updateBoard(board);
+	}
 	
 	
 }

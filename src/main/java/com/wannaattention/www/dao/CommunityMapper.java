@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.wannaattention.www.vo.Board;
 
@@ -39,6 +40,8 @@ public interface CommunityMapper {
 	@Delete("DELETE FROM BOARD_TB WHERE BOARD_NUM = #{boardNum}")
 	public void deleteBoard(Integer boardNum);
 
+	@Update("UPDATE BOARD_TB SET BOARD_TYPE = #{boardType}, TITLE = #{title}, CONTENT = #{content} WHERE BOARD_NUM = #{boardNum}")
+	public void updateBoard(Board board);
 	
 
 }

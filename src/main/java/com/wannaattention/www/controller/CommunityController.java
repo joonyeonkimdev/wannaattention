@@ -184,8 +184,46 @@ public class CommunityController {
 		mav.addObject("msg", "게시글이 삭제되었습니다.");
 		mav.addObject("url", "boardList");
 		mav.setViewName("/alert");
+		return mav;	
+	}
+	
+	@GetMapping("boardUpdate")
+	public ModelAndView boardUpdate(Integer boardNum) {
+		ModelAndView mav = new ModelAndView();
+		Board board = service.selectBoardByBN(boardNum);
+		mav.addObject("board", board);
+		String boardType = board.getBoardType();
+		if(boardType == null || boardType.equals("1"))
+			mav.addObject("boardName","공지시항");
+		else if(boardType.equals("2"))
+			mav.addObject("boardName","후원금 사용내역");
+		else if(boardType.equals("3"))
+			mav.addObject("boardName","QNA");
+		else if(boardType.equals("4"))
+			mav.addObject("boardName","자유게시판");
+		else if(boardType.equals("5"))
+			mav.addObject("boardName","입양 후기");
 		return mav;
-		
+	}
+	
+	@PostMapping("boardUpdate")
+	public ModelAndView boardUpdate(@Valid Board board, BindingResult bindingresult, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.input.board");
+			return mav;
+		}
+		try {
+		    service.updateBoard(board);
+		} catch(Exception e) {
+			e.printStackTrace();
+			bindingresult.reject("error.update.board");
+			mav.getModel().putAll(bindingresult.getModel());
+			return mav;
+		}
+		mav.setViewName("redirect:boardDetail?boardNum=" + board.getBoardNum());
+		return mav;
 	}
 	
 	

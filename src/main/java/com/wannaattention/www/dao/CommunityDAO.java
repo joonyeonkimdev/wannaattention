@@ -53,5 +53,9 @@ public class CommunityDAO {
 		template.getMapper(CommunityMapper.class).deleteBoard(boardNum);
 	}
 
+	public void updateBoard(Board board) {
+		template.getMapper(CommunityMapper.class).updateBoard(board);
+	}
+
 	
 }
