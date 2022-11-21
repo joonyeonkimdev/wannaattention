@@ -70,8 +70,8 @@ public class MissingController {
 		}
 		
 		int limit = 10;
-		int listCount = service.missingCount(); // 동물 리스트 갯수
-		List<MissingAnimal> missingList = service.missingList(pageNum, limit); // 동물 리스트 가져오기 
+		int listCount = service.missingCount(species); // 동물 리스트 갯수
+		List<MissingAnimal> missingList = service.missingList(pageNum, limit, species); // 동물 리스트 가져오기 
 		
 		int maxPage = (int)((double)listCount/limit + 0.95); // 출력 최대 페이지
 		int startPage = (int)((pageNum/10.0 + 0.9) - 1) * 10 + 1; // 페이징 시작번호
@@ -86,6 +86,7 @@ public class MissingController {
 		mav.addObject("endPage", endPage); 
 		mav.addObject("listCount", listCount);
 		mav.addObject("missingList", missingList);
+		mav.addObject("species", species);
 		return mav;
 	}
 	
@@ -96,6 +97,36 @@ public class MissingController {
 		mav.addObject("msg", "실종 등록 동물이 삭제되었습니다.");
 		mav.addObject("url", "missingList");
 		mav.setViewName("/alert");
+		return mav;
+	}
+	
+	@GetMapping("missingUpdate")
+	public ModelAndView missingUpdate(Integer missingAnimalNum) {
+		ModelAndView mav = new ModelAndView();
+		MissingAnimal missingAnimal = service.selectMissingAnimal(missingAnimalNum);
+		mav.addObject("missingAnimal", missingAnimal);
+		System.out.println(missingAnimal);
+		return mav;
+	}
+	
+	@PostMapping("missingUpdate")
+	public ModelAndView missingUpdate(@Valid MissingAnimal missingAnimal, BindingResult bindingresult, HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		System.out.println(missingAnimal);
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.input.missing");
+			return mav;
+		}
+		try {
+		    service.updateMissing(missingAnimal, request);
+		} catch(Exception e) {
+			e.printStackTrace();
+			bindingresult.reject("error.update.missing");
+			mav.getModel().putAll(bindingresult.getModel());
+			return mav;
+		}
+		mav.setViewName("redirect:missingDetail?missingAnimalNum=" + missingAnimal.getMissingAnimalNum());
 		return mav;
 	}
 	

@@ -27,8 +27,10 @@ public class AnimalDAO {
 		
 	}
 
-	public int animalCount() {
-		return template.getMapper(AnimalMapper.class).animalCount();
+	public int animalCount(String species) {
+		param.clear();
+		param.put("species", species);
+		return template.getMapper(AnimalMapper.class).animalCount(param);
 	}
 
 	public List<Animal> animalList(Integer pageNum, int limit, String species) {

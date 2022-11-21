@@ -72,6 +72,13 @@ public class CommunityService {
 		dao.readCntAdd(boardNum);
 	}
 
+	public void deleteBoard(Integer boardNum) {
+		dao.deleteBoard(boardNum);	
+	}
+
+	public void updateBoard(Board board) {
+		dao.updateBoard(board);
+	}
 	
 	
 }

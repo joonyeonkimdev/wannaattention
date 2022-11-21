@@ -21,8 +21,11 @@ public interface AnimalMapper {
 			+ " VALUES (#{animalNum}, #{shelterNum}, #{name}, #{age}, #{species}, #{breed}, #{gender}, #{neutralization}, #{vaccination}, #{enterDate}, #{protectEndDate}, #{adoptStep}, #{profileFilename})")
 	public void insertAnimal(Animal animal);
 
-	@Select("SELECT COUNT(*) FROM ANIMAL_TB")
-	public int animalCount();
+	@Select({"<script>",
+			"SELECT COUNT(*) FROM ANIMAL_TB",
+			"<if test='species != null and species != \"0\"'> WHERE SPECIES = #{species}</if>",
+			"</script>"})
+	public int animalCount(Map<String, Object> param);
 
 	@Select({"<script>",
 			"SELECT *" + 
@@ -54,17 +57,6 @@ public interface AnimalMapper {
 			+ " SET NAME = #{name}, AGE = #{age}, SPECIES = #{species}, BREED = #{breed}, GENDER = #{gender}, NEUTRALIZATION = #{neutralization}, VACCINATION = #{vaccination}, ENTER_DATE = #{enterDate}, PROTECT_END_DATE = #{protectEndDate}, ADOPT_STEP = #{adoptStep}, PROFILE_FILENAME = #{profileFilename}"
 			+ " WHERE ANIMAL_NUM = #{animalNum}")
 	public void updateAnimal(Animal animal);
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
 	
 	
 	

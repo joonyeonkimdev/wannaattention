@@ -166,7 +166,7 @@
 			<div class="form-group col-lg-4 mt-5">
 				<c:choose>
 					<c:when test="${animal.profileFilename != null && animal.profileFilename != ''}">
-						<img src="/animalProfile/${animal.profileFilename }" class="profileDefaultPic" name="profileDefaultPic" class="img-fluid">
+						<img src="/animalProfile/${animal.profileFilename }" class="profileDefaultPic" name="profileDefaultPic">
 					</c:when>
 					<c:otherwise>
 						<img src="../../../resources/images/animProfile_default_pic.png" class="profileDefaultPic" name="profileDefaultPic" class="img-fluid">

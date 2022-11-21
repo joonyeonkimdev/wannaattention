@@ -44,8 +44,13 @@
 			<mapping path="/animal/animalRegister"/>
 			<mapping path="/animal/booking"/>
 			<mapping path="/animal/animalUpdate"/>
+			<mapping path="/animal/animalDelete"/>
 			<mapping path="/community/boardWrite"/>
+			<mapping path="/community/boardDelete"/>
+			<mapping path="/community/boardUpdate"/>
 			<mapping path="/missing/missingRegister"/>
+			<mapping path="/missing/missingDelete"/>
+			<mapping path="/missing/missingUpdate"/>
 			<beans:ref bean="InterceptorForLogin"/>
 		</interceptor>
 		<interceptor>
@@ -57,7 +62,12 @@
 			<beans:ref bean="InterceptorForAdopter"/>
 		</interceptor>
 		<interceptor>
+			<mapping path="/animal/animalDelete"/>
 			<mapping path="/animal/animalUpdate"/>
+			<mapping path="/missing/missingDelete"/>
+			<mapping path="/missing/missingUpdate"/>
+			<mapping path="/community/boardDelete"/>
+			<mapping path="/community/boardUpdate"/>
 			<beans:ref bean="InterceptorForMyPost"/>
 		</interceptor>
 	</interceptors>

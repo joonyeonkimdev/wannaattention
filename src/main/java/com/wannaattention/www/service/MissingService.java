@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.wannaattention.www.dao.MissingDAO;
-import com.wannaattention.www.vo.Animal;
 import com.wannaattention.www.vo.MissingAnimal;
 import com.wannaattention.www.vo.User;
 
@@ -42,6 +41,7 @@ public class MissingService {
 				}
 				try {
 					Files.copy(tempFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -49,7 +49,7 @@ public class MissingService {
 			if (newFile.exists()) {
 				tempFile.delete();
 			}
-			missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
+			
 		}
 
 		// 동물 등록
@@ -63,16 +63,46 @@ public class MissingService {
 		return dao.selectMissingAnimal(missingAnimalNum);
 	}
 
-	public int missingCount() {
-		return dao.missingCount();
+	public int missingCount(String species) {
+		return dao.missingCount(species);
 	}
 
-	public List<MissingAnimal> missingList(Integer pageNum, int limit) {
-		return dao.missingList(pageNum, limit);
+	public List<MissingAnimal> missingList(Integer pageNum, int limit, String species) {
+		return dao.missingList(pageNum, limit, species);
 	}
 
 	public void deleteMissing(Integer missingAnimalNum) {
 		dao.deleteMissing(missingAnimalNum);
+	}
+
+	public void updateMissing(MissingAnimal missingAnimal, HttpServletRequest request) {
+		if (missingAnimal.getPhotoFilename() != null && !missingAnimal.getPhotoFilename().isEmpty()) {
+			HttpSession session = request.getSession();
+			User loginUser = (User)session.getAttribute("loginUser");
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmm"); 
+			String nowDate = simpleDateFormat.format(new Date());
+			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
+					+ missingAnimal.getPhotoFilename();
+			String newFilePath = request.getServletContext().getRealPath("/") + "missingPhoto/" 
+					+ loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf("."));
+			File tempFile = new File(tempFilePath);
+			File newFile = new File(newFilePath);
+			if (tempFile.exists()) {
+				if (!newFile.exists()) {
+					newFile.mkdirs();
+				}
+				try {
+					Files.copy(tempFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (newFile.exists()) {
+				tempFile.delete();
+			}
+		}
+		dao.updateMissing(missingAnimal);
 	}
 
 }
