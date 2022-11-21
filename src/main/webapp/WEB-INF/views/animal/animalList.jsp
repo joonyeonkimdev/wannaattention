@@ -8,15 +8,12 @@
 <meta charset="UTF-8">
 <title>입양 동물 보기</title>
 <script type="text/javascript">
-	let button0 = document.getElementById("button0");
-	let button1 = document.getElementById("button1");
-	let button2 = document.getElementById("button2");
-	let button3 = document.getElementById("button3");
+	function filter_species(num) {
+		location.href='animalList?species=' + num;
+	}
 </script>
 <style type="text/css">
-	a {
-		text-decoration: none;
-	}
+	a {text-decoration: none;}
 </style>
 </head>
 <body>
@@ -27,10 +24,10 @@
 		<div class="row">
 			<div class="col-lg-4"></div>
 			<div class="btn-group col-lg-4 mt-5" role="group" style="text-align:center;">
-				<button type="button" id="button0" class="btn btn-outline-primary" onclick="location.href='animalList?species=0'">전체</button>
-				<button type="button" id="button1" class="btn btn-outline-primary" onclick="location.href='animalList?species=1'">강아지</button>
-				<button type="button" id="button2" class="btn btn-outline-primary" onclick="location.href='animalList?species=2'">고양이</button>
-				<button type="button" id="button3" class="btn btn-outline-primary" onclick="location.href='animalList?species=3'">기타</button>
+				<button type="button" id="button0" class="btn btn-outline-primary" onclick="filter_species(0)">전체</button>
+				<button type="button" id="button1" class="btn btn-outline-primary" onclick="filter_species(1)">강아지</button>
+				<button type="button" id="button2" class="btn btn-outline-primary" onclick="filter_species(2)">고양이</button>
+				<button type="button" id="button3" class="btn btn-outline-primary" onclick="filter_species(3)">기타</button>
 			</div>
 		</div>
 		<%-- 글등록 버튼(보호소 유저만) --%>

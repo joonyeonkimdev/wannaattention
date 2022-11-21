@@ -180,9 +180,10 @@ public class CommunityController {
 	@RequestMapping("boardDelete")
 	public ModelAndView boardDelete(Integer boardNum) {
 		ModelAndView mav = new ModelAndView();
+		Board board = service.selectBoardByBN(boardNum);
 		service.deleteBoard(boardNum);
 		mav.addObject("msg", "게시글이 삭제되었습니다.");
-		mav.addObject("url", "boardList");
+		mav.addObject("url", "boardList?boardType=" + board.getBoardType());
 		mav.setViewName("/alert");
 		return mav;	
 	}

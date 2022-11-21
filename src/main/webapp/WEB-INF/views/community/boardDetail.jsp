@@ -11,7 +11,7 @@
 	function delete_confirm() {
 		let flag = confirm("게시글을 삭제하시겠습니까?");
 		if (flag) {
-			location.href="boardDelete?baordNum=${board.boardNum}";
+			location.href="boardDelete?boardNum=" + ${board.boardNum};
 		}
 	}
 </script>
