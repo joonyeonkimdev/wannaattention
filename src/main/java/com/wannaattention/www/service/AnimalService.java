@@ -31,11 +31,12 @@ public class AnimalService {
 	}
 
 	public int insertAnimal(Animal animal, HttpServletRequest request) {
+		System.out.println(animal);
 		// 임시 파일 -> 프로필 파일 업로드
 		if (animal.getProfileFilename() != null && !animal.getProfileFilename().isEmpty()) {
 			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
 					+ animal.getProfileFilename();
-			String newFilePath = request.getServletContext().getRealPath("/") + "profileFile/" + "shelter" + animal.getShelterNum() + "_" + animal.getName() + "_profile"
+			String newFilePath = request.getServletContext().getRealPath("/") + "animalProfile/" + "shelter" + animal.getShelterNum() + "_" + animal.getName() + "_profile"
 					 + animal.getProfileFilename().substring(animal.getProfileFilename().lastIndexOf("."));
 			File tempProfileFile = new File(tempFilePath);
 			File newProfileFile = new File(newFilePath);

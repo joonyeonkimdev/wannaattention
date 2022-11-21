@@ -51,7 +51,7 @@
 					<c:forEach var="animal" items="${animalList }">
 						<tr style="cursor: pointer;" onclick="location.href='animalDetail?animalNum=${animal.animalNum}'">
 							<td>
-								<img src="/profileFile/${animal.profileFilename }" width="200px" height="200px">
+								<img src="/animalProfile/${animal.profileFilename }" width="200px" height="200px">
 							</td>
 							<td>
 								${animal.name }

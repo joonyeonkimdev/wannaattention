@@ -61,7 +61,7 @@ public class CommunityController {
 		if (currentFile.exists()) {
 			currentFile.delete();
 		}
-		String fileName = path + loginUser.getId() + "_ckedit_" + nowDate + upload.getOriginalFilename().substring(upload.getOriginalFilename().lastIndexOf("."));		
+		String fileName = "/boardPhoto/" + loginUser.getId() + "_ckedit_" + nowDate + upload.getOriginalFilename().substring(upload.getOriginalFilename().lastIndexOf("."));		
 		System.out.println(fileName);
 		model.addAttribute("fileName", fileName);
 		model.addAttribute("CKEditorFuncNum", CKEditorFuncNum);

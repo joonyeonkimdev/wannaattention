@@ -29,7 +29,7 @@ public class UserService {
 		// 임시 파일 -> 프로필 파일 업로드
 		if (user.getProfileFilename() != null && !user.getProfileFilename().isEmpty()) {
 			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/" + user.getProfileFilename();
-			String newFilePath = request.getServletContext().getRealPath("/") + "profileFile/" + user.getId() + "_profile" + user.getProfileFilename().substring(user.getProfileFilename().lastIndexOf("."));
+			String newFilePath = request.getServletContext().getRealPath("/") + "userProfile/" + user.getId() + "_profile" + user.getProfileFilename().substring(user.getProfileFilename().lastIndexOf("."));
 			File tempProfileFile = new File(tempFilePath);
 			File newProfileFile = new File(newFilePath);
 			if (tempProfileFile.exists()) {

@@ -84,7 +84,7 @@
 						<c:choose>
 							<c:when test="${loginUser.profileFilename != null }">
 								&nbsp;&nbsp;
-								<img src="/profileFile/${loginUser.profileFilename }" class="d-inline-block align-top" style="width: 30px; height: 30px; border-radius: 50%;">
+								<img src="/userProfile/${loginUser.profileFilename }" class="d-inline-block align-top" style="width: 30px; height: 30px; border-radius: 50%;">
 							</c:when>
 							<c:otherwise>
 								&nbsp;&nbsp;

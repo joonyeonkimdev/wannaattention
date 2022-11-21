@@ -46,7 +46,7 @@
 					<c:forEach var="missingAnimal" items="${missingList }">
 						<tr style="cursor: pointer;" onclick="location.href='missingDetail?missingAnimalNum=${missingAnimal.missingAnimalNum}'">
 							<td>
-								<img src="/missingPhotoFile/${missingAnimal.photoFilename }" width="200px" height="200px">
+								<img src="/missingPhoto/${missingAnimal.photoFilename }" width="200px" height="200px">
 							</td>
 							<td>
 								${missingAnimal.status }

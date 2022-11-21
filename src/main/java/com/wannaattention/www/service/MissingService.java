@@ -32,7 +32,7 @@ public class MissingService {
 			String nowDate = simpleDateFormat.format(new Date());
 			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
 					+ missingAnimal.getPhotoFilename();
-			String newFilePath = request.getServletContext().getRealPath("/") + "missingPhotoFile/" 
+			String newFilePath = request.getServletContext().getRealPath("/") + "missingPhoto/" 
 					+ loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf("."));
 			File tempFile = new File(tempFilePath);
 			File newFile = new File(newFilePath);

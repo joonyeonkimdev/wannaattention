@@ -15,7 +15,7 @@
 		<div class="card mb-4">
 			<div class="card-body">
 				<div class="mt-5" style="text-align: center;">
-					<img src="/profileFile/${animal.profileFilename }" width="500" height="500" class="img-fluid">
+					<img src="/animalProfile/${animal.profileFilename }" width="500" height="500" class="img-fluid">
 				</div>
 				<div class="row mt-5" style="text-align: center;">
 					<table class="table table-striped">
