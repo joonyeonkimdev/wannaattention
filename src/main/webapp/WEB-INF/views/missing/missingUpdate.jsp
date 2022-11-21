@@ -74,13 +74,11 @@
 </style>
 </head>
 <body>
-	<fmt:formatDate var="year" value="<%=new java.util.Date() %>" pattern="yyyy" />
 	<div class="container">
 		<h2>실종 동물 수정</h2>
 		<hr>
 		<form:form modelAttribute="missingAnimal" action="missingUpdate" enctype="multipart/form-data" name="f" onsubmit="return onSubmit();">
 			<form:hidden path="missingAnimalNum"/>
-			<form:hidden path="regDate"/>
 			<div class="form-group col-lg-4 mt-5">
 				<c:choose>
 					<c:when test="${missingAnimal.photoFilename != null && missingAnimal.photoFilename != ''}">
@@ -97,7 +95,7 @@
 				<a onclick="uploadPopup()">
 					<button type="button" class="btn btn-info btn-sm">사진 업로드</button>
 				</a>
-				<form:hidden path="photoFilename"/>
+				<form:hidden path="photoFilename" value=""/>
 			</div>
 			<spring:hasBindErrors name="missingAnimal">
 				<font color="red">
@@ -106,8 +104,8 @@
 					</c:forEach>
 				</font>
 			</spring:hasBindErrors>
-			<form:hidden path="writerNum" value="${loginUser.userNum }"/>
-			<form:hidden path="writerNickname" value="${loginUser.nickname }"/>
+			<form:hidden path="writerNum"/>
+			<form:hidden path="writerNickname"/>
 			<div class="form-group col-lg-4 mt-3">
 				<div class="input-group-prepend">
 					<span class="input-group-text">실종 상태</span>

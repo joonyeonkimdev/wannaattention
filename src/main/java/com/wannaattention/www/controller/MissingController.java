@@ -104,12 +104,14 @@ public class MissingController {
 		ModelAndView mav = new ModelAndView();
 		MissingAnimal missingAnimal = service.selectMissingAnimal(missingAnimalNum);
 		mav.addObject("missingAnimal", missingAnimal);
+		System.out.println(missingAnimal);
 		return mav;
 	}
 	
 	@PostMapping("missingUpdate")
 	public ModelAndView missingUpdate(@Valid MissingAnimal missingAnimal, BindingResult bindingresult, HttpSession session, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView();
+		System.out.println(missingAnimal);
 		if(bindingresult.hasErrors()) {
 			mav.getModel().putAll(bindingresult.getModel());
 			bindingresult.reject("error.input.missing");

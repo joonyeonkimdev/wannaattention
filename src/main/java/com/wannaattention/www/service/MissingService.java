@@ -41,6 +41,7 @@ public class MissingService {
 				}
 				try {
 					Files.copy(tempFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -48,7 +49,7 @@ public class MissingService {
 			if (newFile.exists()) {
 				tempFile.delete();
 			}
-			missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
+			
 		}
 
 		// 동물 등록
@@ -92,6 +93,7 @@ public class MissingService {
 				}
 				try {
 					Files.copy(tempFile.toPath(), newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -99,7 +101,6 @@ public class MissingService {
 			if (newFile.exists()) {
 				tempFile.delete();
 			}
-			missingAnimal.setPhotoFilename(loginUser.getId() + "_missingPhoto" + nowDate + missingAnimal.getPhotoFilename().substring(missingAnimal.getPhotoFilename().lastIndexOf(".")));
 		}
 		dao.updateMissing(missingAnimal);
 	}

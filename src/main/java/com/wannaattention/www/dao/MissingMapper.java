@@ -20,7 +20,7 @@ public interface MissingMapper {
 	public void insertMissingAnimal(MissingAnimal missingAnimal);
 
 	@Select("SELECT M.MISSING_ANIMAL_NUM, U.USER_NUM AS WRITER_NUM, U.NICKNAME AS WRITER_NICKNAME, M.STATUS, M.SPECIES, M.BREED, M.GENDER, M.LOCATION, M.REG_DATE, M.DESCRIPTION ,M.PHOTO_FILENAME"
-			+ " FROM MISSING_ANIMAL_TB M, USER_TB U WHERE M.WRITER_NUM = U.USER_NUM AND MISSING_ANIMAL_NUM = #{missingAnimalNum}")
+			+ " FROM MISSING_ANIMAL_TB M, USER_TB U WHERE M.WRITER_NUM = U.USER_NUM AND M.MISSING_ANIMAL_NUM = #{missingAnimalNum}")
 	public MissingAnimal selectMissingAnimal(Integer missingAnimalNum);
 
 	@Select("SELECT COUNT(*) FROM MISSING_ANIMAL_TB")
@@ -37,7 +37,7 @@ public interface MissingMapper {
 	public void deleteMissing(Integer missingAnimalNum);
 
 	@Update("UPDATE MISSING_ANIMAL_TB"
-			+ " SET MISSING_ANIMAL_NUM = #{missingAnimalNum}, WRITER_NUM = #{writerNum}, STATUS = #{status}, SPECIES = #{species}, BREED = #{breed}, GENDER = #{gender}, LOCATION = #{location}, REG_DATE = #{regDate}, DESCRIPTION = #{description}, PHOTO_FILENAME = #{photoFilename}"
+			+ " SET MISSING_ANIMAL_NUM = #{missingAnimalNum}, WRITER_NUM = #{writerNum}, STATUS = #{status}, SPECIES = #{species}, BREED = #{breed}, GENDER = #{gender}, LOCATION = #{location}, DESCRIPTION = #{description}, PHOTO_FILENAME = #{photoFilename}"
 			+ " WHERE MISSING_ANIMAL_NUM = #{missingAnimalNum}")
 	public void updateMissing(MissingAnimal missingAnimal);
 
