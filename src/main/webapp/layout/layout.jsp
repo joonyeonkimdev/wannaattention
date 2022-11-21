@@ -25,7 +25,7 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<a class="navbar-brand" href="/">
-			    <img src="../resources/images/service_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+			    <img src="/resources/images/service_logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
 			    WannaAttention
     		</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,8 +50,7 @@
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">도움의 손길</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="${path}/touchOfAid/donate">후원하기</a>
-							<a class="dropdown-item" href="${path}/touchOfAid/voluteer">자원봉사</a>
+							<a class="dropdown-item" href="${path}/donation/donate/registDonate">후원하기</a>
 						</div>
 					</li>
 					<li class="nav-item dropdown">

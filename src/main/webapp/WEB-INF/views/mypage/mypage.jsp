@@ -19,8 +19,9 @@
 				<li class="breadcrumb-item"><a href="#">회원 정보 수정</a></li>
 				<li class="breadcrumb-item"><a href="#">내가 쓴 글</a></li>
 				<li class="breadcrumb-item"><a href="#">예약 내역</a></li>
-				<li class="breadcrumb-item"><a href="#">Library</a></li>
-				<li class="breadcrumb-item"><a href="#">Library</a></li>
+				<li class="breadcrumb-item"><a href="#">입양 동물 관리</a></li>
+				<li class="breadcrumb-item"><a href="#">실종 동물 관리</a></li>
+				<li class="breadcrumb-item"><a href="#">회원 관리</a></li>
 			</ol>
 		</nav>
 	</div>
