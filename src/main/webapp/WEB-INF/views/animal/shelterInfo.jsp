@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="mt-5" style="text-align: center;">
-			<img src="/profileFile/${shelter.profileFilename }" width="500" height="500">
+			<img src="/userProfile/${shelter.profileFilename }" width="500" height="500">
 		</div>
 		<div class="row mt-5" style="text-align: center;">
 			<table class="table table-striped">
