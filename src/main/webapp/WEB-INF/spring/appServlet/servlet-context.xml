@@ -38,10 +38,12 @@
 	<beans:bean id="InterceptorForLogin" class="com.wannaattention.www.util.InterceptorForLogin"/>
 	<beans:bean id="InterceptorForShelter" class="com.wannaattention.www.util.InterceptorForShelter"/>
 	<beans:bean id="InterceptorForAdopter" class="com.wannaattention.www.util.InterceptorForAdopter"/>
+	<beans:bean id="InterceptorForMyPost" class="com.wannaattention.www.util.InterceptorForMyPost"/>
 	<interceptors>
 		<interceptor>
 			<mapping path="/animal/animalRegister"/>
 			<mapping path="/animal/booking"/>
+			<mapping path="/animal/animalUpdate"/>
 			<mapping path="/community/boardWrite"/>
 			<mapping path="/missing/missingRegister"/>
 			<beans:ref bean="InterceptorForLogin"/>
@@ -53,6 +55,10 @@
 		<interceptor>
 			<mapping path="/animal/booking"/>
 			<beans:ref bean="InterceptorForAdopter"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/animal/animalUpdate"/>
+			<beans:ref bean="InterceptorForMyPost"/>
 		</interceptor>
 	</interceptors>
 	

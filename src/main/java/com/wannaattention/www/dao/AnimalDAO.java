@@ -57,6 +57,15 @@ public class AnimalDAO {
 		template.getMapper(AnimalMapper.class).insertBooking(booking);	
 	}
 
+	public void deleteAnimal(Integer animalNum) {
+		template.getMapper(AnimalMapper.class).deleteAnimal(animalNum);
+		
+	}
+
+	public void updateAnimal(Animal animal) {
+		template.getMapper(AnimalMapper.class).updateAnimal(animal);
+	}
+
 
 	
 	

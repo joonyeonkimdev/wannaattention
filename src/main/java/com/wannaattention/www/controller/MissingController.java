@@ -89,5 +89,15 @@ public class MissingController {
 		return mav;
 	}
 	
+	@RequestMapping("missingDelete")
+	public ModelAndView missingDelete(Integer missingAnimalNum) {
+		ModelAndView mav = new ModelAndView();
+		service.deleteMissing(missingAnimalNum);
+		mav.addObject("msg", "실종 등록 동물이 삭제되었습니다.");
+		mav.addObject("url", "missingList");
+		mav.setViewName("/alert");
+		return mav;
+	}
+	
 	
 }

@@ -7,6 +7,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,6 @@ public class AnimalService {
 	}
 
 	public int insertAnimal(Animal animal, HttpServletRequest request) {
-		System.out.println(animal);
 		// 임시 파일 -> 프로필 파일 업로드
 		if (animal.getProfileFilename() != null && !animal.getProfileFilename().isEmpty()) {
 			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
@@ -100,6 +100,36 @@ public class AnimalService {
 		dao.insertBooking(booking);
 	}
 
+	public void deleteAnimal(Integer animalNum) {
+		dao.deleteAnimal(animalNum);
+	}
+
+	public void updateAnimal(Animal animal, HttpServletRequest request) {
+		if (animal.getProfileFilename() != null && !animal.getProfileFilename().isEmpty()) {
+			String tempFilePath = request.getServletContext().getRealPath("/") + "tempUploadFile/"
+					+ animal.getProfileFilename();
+			String newFilePath = request.getServletContext().getRealPath("/") + "animalProfile/" + "shelter" + animal.getShelterNum() + "_" + animal.getName() + "_profile"
+					 + animal.getProfileFilename().substring(animal.getProfileFilename().lastIndexOf("."));
+			File tempProfileFile = new File(tempFilePath);
+			File newProfileFile = new File(newFilePath);
+			if (tempProfileFile.exists()) {
+				if (!newProfileFile.exists()) {
+					newProfileFile.mkdirs();
+				}
+				try {
+					Files.copy(tempProfileFile.toPath(), newProfileFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+					animal.setProfileFilename("shelter" + animal.getShelterNum() + "_" + animal.getName() + "_profile"
+								+ animal.getProfileFilename().substring(animal.getProfileFilename().lastIndexOf(".")));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			if (newProfileFile.exists()) {
+				tempProfileFile.delete();
+			}
+		}
+		dao.updateAnimal(animal);
+	}
 	
 	
 	

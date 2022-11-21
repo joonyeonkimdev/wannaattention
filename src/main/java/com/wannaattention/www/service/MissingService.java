@@ -71,4 +71,8 @@ public class MissingService {
 		return dao.missingList(pageNum, limit);
 	}
 
+	public void deleteMissing(Integer missingAnimalNum) {
+		dao.deleteMissing(missingAnimalNum);
+	}
+
 }

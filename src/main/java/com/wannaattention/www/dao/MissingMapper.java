@@ -3,6 +3,7 @@ package com.wannaattention.www.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
@@ -30,5 +31,8 @@ public interface MissingMapper {
 			" FROM MISSING_ANIMAL_TB M, USER_TB U WHERE M.WRITER_NUM = U.USER_NUM ORDER BY M.REG_DATE DESC))" + 
 			" WHERE RNUM BETWEEN #{startRow} AND #{endRow}")
 	public List<MissingAnimal> missingList(Map<String, Object> param);
+
+	@Delete("DELETE FROM MISSING_ANIMAL_TB WHERE MISSING_ANIMAL_NUM = #{missingAnimalNum}")
+	public void deleteMissing(Integer missingAnimalNum);
 
 }

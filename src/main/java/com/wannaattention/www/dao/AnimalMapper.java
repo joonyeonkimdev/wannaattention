@@ -3,8 +3,10 @@ package com.wannaattention.www.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.wannaattention.www.vo.Animal;
 import com.wannaattention.www.vo.Booking;
@@ -44,6 +46,15 @@ public interface AnimalMapper {
 	
 	@Insert("INSERT INTO BOOKING_TB (BOOKING_NUM, BOOKER_NUM, SHELTER_NUM, ANIMAL_NUM, BOOKING_DATE) VALUES (#{bookingNum}, #{bookerNum}, #{shelterNum}, #{animalNum}, #{bookingDate})")
 	public void insertBooking(Booking booking);
+
+	@Delete("DELETE FROM ANIMAL_TB WHERE ANIMAL_NUM = #{animalNum}")
+	public void deleteAnimal(Integer animalNum);
+
+	@Update("UPDATE ANIMAL_TB"
+			+ " SET NAME = #{name}, AGE = #{age}, SPECIES = #{species}, BREED = #{breed}, GENDER = #{gender}, NEUTRALIZATION = #{neutralization}, VACCINATION = #{vaccination}, ENTER_DATE = #{enterDate}, PROTECT_END_DATE = #{protectEndDate}, ADOPT_STEP = #{adoptStep}, PROFILE_FILENAME = #{profileFilename}"
+			+ " WHERE ANIMAL_NUM = #{animalNum}")
+	public void updateAnimal(Animal animal);
+	
 	
 	
 	

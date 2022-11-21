@@ -42,4 +42,8 @@ public class MissingDAO {
 		return template.getMapper(MissingMapper.class).missingList(param);
 	}
 
+	public void deleteMissing(Integer missingAnimalNum) {
+		template.getMapper(MissingMapper.class).deleteMissing(missingAnimalNum);
+	}
+
 }

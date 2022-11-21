@@ -7,6 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>입양 동물 상세</title>
+<script type="text/javascript">
+	function delete_confirm() {
+		let flag = confirm("등록 동물을 삭제하시겠습니까?");
+		if (flag) {
+			location.href="animalDelete?animalNum=${animal.animalNum}";
+		}
+	}
+</script>
 </head>
 <body>
 	<div class="container mt-5">
@@ -114,15 +122,19 @@
 			</div>
 		</div>
 		<h3 class="mt-4">[ 입양으로 ${animal.name }를(을) 구해주세요. ]</h3>
-		<c:if test="${loginUser.userNum != animal.shelterNum }">
+		<c:if test="${loginUser == null || empty loginUser || loginUser.userType == '0'}">
 			<div>
 				<button type="button" class="btn btn-success mt-3" onclick="location.href='booking?animalNum=${animal.animalNum}'">입양하기</button>
 			</div>
 		</c:if>
 		<c:if test="${loginUser.userNum == animal.shelterNum }">
 			<div>
-				<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='animalUpdate'">수정</button>
+				<button type="button" class="btn btn-outline-success mt-3" onclick="location.href='animalUpdate?animalNum=${animal.animalNum}'">수정</button>
+				<button type="button" class="btn btn-outline-success mt-3" onclick="delete_confirm()">삭제</button>
 			</div>
+		</c:if>
+		<c:if test="${loginUser.id == 'admin' }">
+			<button type="button" class="btn btn-outline-success mt-3" onclick="delete_confirm()">삭제</button>
 		</c:if>
 	</div>
 </body>

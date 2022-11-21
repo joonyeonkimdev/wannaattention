@@ -143,6 +143,44 @@ public class AnimalController {
 		}
 	}
 	
+	@RequestMapping("animalDelete")
+	public ModelAndView animalDelete(Integer animalNum) {
+		ModelAndView mav = new ModelAndView();
+		service.deleteAnimal(animalNum);
+		mav.addObject("msg", "등록 동물이 삭제되었습니다.");
+		mav.addObject("url", "animalList");
+		mav.setViewName("/alert");
+		return mav;
+	}
+	
+	@GetMapping("animalUpdate")
+	public ModelAndView animalUpdate(Integer animalNum) {
+		ModelAndView mav = new ModelAndView();
+		Animal animal = service.selectAnimal(animalNum);
+		mav.addObject("animal", animal);
+		return mav;
+	}
+	
+	@PostMapping("animalUpdate")
+	public ModelAndView animalUpdate(@Valid Animal animal, BindingResult bindingresult, HttpSession session, HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView();
+		if(bindingresult.hasErrors()) {
+			mav.getModel().putAll(bindingresult.getModel());
+			bindingresult.reject("error.input.animal");
+			return mav;
+		}
+		try {
+		    service.updateAnimal(animal, request);
+		} catch(Exception e) {
+			e.printStackTrace();
+			bindingresult.reject("error.update.animal");
+			mav.getModel().putAll(bindingresult.getModel());
+			return mav;
+		}
+		mav.setViewName("redirect:animalDetail?animalNum=" + animal.getAnimalNum());
+		return mav;
+	}
+
 	
 	
 	

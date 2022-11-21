@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.wannaattention.www.vo.Animal;
 import com.wannaattention.www.vo.User;
 
 public class InterceptorForLogin extends HandlerInterceptorAdapter {
