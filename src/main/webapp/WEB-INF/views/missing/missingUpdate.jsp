@@ -144,8 +144,8 @@
 				<form:hidden path="gender"/>
 				<select class="custom-select" id="genderSelect" onchange="set_gender()">
 					<option selected="selected"></option>
-					<option value="1">암컷</option>
-					<option value="2">수컷</option>
+					<option value="1">수컷</option>
+					<option value="2">암컷</option>
 					<option value="3">모름</option>
 				</select>
 			</div>
@@ -164,7 +164,7 @@
 				<small style="color: red;"><form:errors path="description" /></small>
 			</div>
 			<div>
-				<button type="submit" class="btn btn-success mt-3" id="submit">등록하기</button>
+				<button type="submit" class="btn btn-success mt-3" id="submit">수정하기</button>
 			</div>
 		</form:form>
 	</div>

@@ -74,6 +74,9 @@
 										<c:when test="${missingAnimal.gender == '2' }">
 											암컷
 										</c:when>
+										<c:when test="${missingAnimal.gender == '3' }">
+											모름
+										</c:when>
 									</c:choose>
 								</td>
 							</tr>
