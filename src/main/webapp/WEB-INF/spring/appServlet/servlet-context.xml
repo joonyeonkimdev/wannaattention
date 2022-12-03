@@ -16,6 +16,9 @@
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<!-- 디폴트 서블릿 핸들러 설정 추가 -->
+	<mvc:default-servlet-handler /> 
+	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
@@ -32,6 +35,7 @@
 	
 	<mvc:default-servlet-handler /> 
 	
+	<!-- AOP 설정 -->
 	<aop:aspectj-autoproxy/>
 	
 	<!-- 로그인 인터셉터 정의 -->
