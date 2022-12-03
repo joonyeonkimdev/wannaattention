@@ -31,8 +31,6 @@ public interface InfoMapper {
 			"<if test='region == 17'> WHERE ADDRESS LIKE '전남%'</if>",
 			"</script>"})
 	public List<Facility> selectPgList(Map<String, Object> param);
-	
-	@Select("SELECT COUNT(*) FROM FACILITY_TB WHERE FAC_TYPE = '4'")
-	public int infoCount();
 
+	
 }

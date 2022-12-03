@@ -10,16 +10,11 @@ import com.wannaattention.www.vo.Facility;
 
 @Service
 public class InfoService {
-	
 	@Autowired
 	private InfoDAO dao;
 
-	public List<Facility> selectPgList(Integer pageNum, Integer limit, Integer region) {
-		return dao.selectPgList(pageNum, limit, region);
-	}
-
-	public int infoCount() {
-		return dao.infoCount();
+	public List<Facility> selectPgList(Integer region) {
+		return dao.selectPgList(region);
 	}
 
 }

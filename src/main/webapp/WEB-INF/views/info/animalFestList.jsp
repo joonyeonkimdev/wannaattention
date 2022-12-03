@@ -4,10 +4,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>반려동물 축제</title>
+	<title>반려동물 축제 정보</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+	<h2>반려동물 축제 정보</h2> 
+	<hr>
 	<div id="map" style="width:90%;height:700px; margin:0 auto;"></div>
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=04aa2f9e9971f0f174266bf2f16f74ec&libraries=clusterer"></script>

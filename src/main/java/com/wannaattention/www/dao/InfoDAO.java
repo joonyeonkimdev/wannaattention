@@ -16,18 +16,10 @@ public class InfoDAO {
 	private SqlSessionTemplate template;
 	private Map<String,Object> param = new HashMap<>();
 	
-	public List<Facility> selectPgList(Integer pageNum, Integer limit, Integer region) {
-		int startRow = (pageNum - 1) * limit + 1; 
-		int endRow = startRow + limit - 1;
+	public List<Facility> selectPgList(Integer region) {
 		param.clear();
-		param.put("startRow", startRow);
-		param.put("endRow", endRow);
 		param.put("region", region);
 		return template.getMapper(InfoMapper.class).selectPgList(param);
-	}
-
-	public int infoCount() {
-		return template.getMapper(InfoMapper.class).infoCount();
 	}
 
 }

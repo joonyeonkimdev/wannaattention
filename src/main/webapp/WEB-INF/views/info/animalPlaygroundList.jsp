@@ -5,10 +5,12 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>반려동물 놀이터</title>
+	<title>동물 놀이터 정보</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+	<h2>동물 놀이터 정보</h2> 
+	<hr>
 	<div id="map" style="width:90%;height:700px; margin:0 auto;"></div>
 
 	<script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=04aa2f9e9971f0f174266bf2f16f74ec&libraries=clusterer"></script>
@@ -178,40 +180,6 @@
     
   </tbody>
 </table>
-
-<%-- 페이징  --%>
-		<div class="row justify-content-center mt-5">
-			<nav>
-				<ul class="pagination">
-					<%-- 앞으로 --%>
-					<c:if test="${pageNum > 1}">
-						<li class="page-item">
-							<a class="page-link" href="animalList?species=${species }&pageNum=${pageNum - 1}">Previous</a>
-						</li>
-					</c:if>
-					<c:if test="${pageNum <= 1}">
-						<li class="page-item disabled"><a class="page-link">Previous</a></li>
-					</c:if>
-					
-					<%-- 페이징 --%>
-					<c:forEach var="a" begin="${startPage }" end="${endPage}">
-						<c:if test="${a == pageNum}">
-							<li class="page-item disabled"><a class="page-link">${a}</a></li>
-						</c:if>
-						<c:if test="${a != pageNum}">
-							<li class="page-item"><a class="page-link" href="animalList?species=${species }&pageNum=${a}">${a}</a></li>
-						</c:if>
-					</c:forEach>
-					<%-- 뒤로 --%>
-					<c:if test="${pageNum < maxPage}">
-						<li class="page-item"><a class="page-link" href="animalList?species=${species }&pageNum=${pageNum + 1}">Next</a></li>
-					</c:if>
-					<c:if test="${pageNum >= maxPage}">
-						<li class="page-item disabled"><a class="page-link">Next</a></li>
-					</c:if>
-				</ul>
-			</nav>
-		</div>
 
 
 </body>
